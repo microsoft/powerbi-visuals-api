@@ -2,8 +2,8 @@
   "name": "powerbi-visuals-api",
   "version": "1.13.0",
   "description": "Power BI Custom Visuals API type definitions for typescript",
-  "types": "PowerBI-visuals",
-  "main": "version.js",
+  "types": "index",
+  "main": "index.js",
   "keywords": [
     "PowerBI",
     "BI",
