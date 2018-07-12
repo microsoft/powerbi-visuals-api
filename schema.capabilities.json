@@ -1,5 +1,4 @@
 {
-    "PBI_API_VERSION": "v1.13.0",
     "type": "object",
     "properties": {
         "dataRoles": {
