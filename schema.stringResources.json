@@ -1,5 +1,4 @@
 {
-    "PBI_API_VERSION": "v2.1.0",
     "type": "object",
     "properties": {
         "locale": {
@@ -8,14 +7,10 @@
         "values": {
             "type": "object",
             "description": "translations for the display name keys in the capabilities",
-            "additionalProperties": {
-                "type": "string"
-            }
+            "additionalProperties": { "type": "string" }
         }
     },
-    "required": [
-        "locale"
-    ],
+    "required": [ "locale" ],
     "definitions": {
         "localeOptions": {
             "description": "Specifies the locale key from a list of supported locales",

@@ -1,5 +1,4 @@
 {
-    "PBI_API_VERSION": "v2.1.0",
     "type": "object",
     "properties": {
         "dataRoles": {
@@ -899,7 +898,7 @@
                         }
                     }
                 },
-                "fillRule": {
+                "fillRule" : {
                     "type": "object",
                     "description": "A color gradient that will be dispalyed to the user as a minimum (,medium) and maximum color pickers",
                     "properties": {
