@@ -1,4 +1,5 @@
 {
+    "PBI_API_VERSION": "v2.1.0",
     "type": "object",
     "properties": {
         "dataRoles": {
@@ -724,10 +725,6 @@
                     "type": "string",
                     "description": "Text to display if the field is empty"
                 },
-                "placeHolderTextKey": {
-                    "type": "string",
-                    "description": "The localization key for the placeHolderText in the stringResources file"
-                },
                 "suppressFormatPainterCopy": {
                     "type": "boolean",
                     "description": "Indicates whether the Format Painter should ignore this property"
@@ -902,7 +899,7 @@
                         }
                     }
                 },
-                "fillRule" : {
+                "fillRule": {
                     "type": "object",
                     "description": "A color gradient that will be dispalyed to the user as a minimum (,medium) and maximum color pickers",
                     "properties": {
