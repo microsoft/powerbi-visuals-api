@@ -1396,3 +1396,5 @@ declare module powerbi.extensibility.visual {
         host: IVisualHost;
     }
 }
+
+export default powerbi;
