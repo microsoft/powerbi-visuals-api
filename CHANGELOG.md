@@ -1,4 +1,5 @@
-# Change Log - Power BI Cusrom Visuals API
+## 2.2.2
+* Adds `fontFamily` into schema for capabilities.json
 
 ## 2.2.1
 * Fix CV API version for patch packages
