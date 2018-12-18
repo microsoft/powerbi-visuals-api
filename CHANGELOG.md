@@ -1,3 +1,11 @@
+# Change Log - Power BI Cusrom Visuals API
+
+## 2.3.1
+* Stronger filtering capabilities with tuple-filter
+
+## 2.3.0 alpha
+* Landing page capabilities for custom visuals
+
 ## 2.2.2
 * Adds `fontFamily` into schema for capabilities.json
 
