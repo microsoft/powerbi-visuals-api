@@ -1015,6 +1015,10 @@
                         "fontSize": {
                             "type": "boolean",
                             "description": "Displays a slider that allows the user to choose a font size in points"
+                        },
+                        "fontFamily": {
+                            "type": "boolean",
+                            "description": "Displays a dropdown with font families"
                         }
                     },
                     "additionalProperties": false,
@@ -1032,6 +1036,11 @@
                         {
                             "required": [
                                 "fontSize"
+                            ]
+                        },
+                        {
+                            "required":[
+                                "fontFamily"
                             ]
                         }
                     ]
