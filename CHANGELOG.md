@@ -1,5 +1,8 @@
 # Change Log - Power BI Cusrom Visuals API
 
+## 2.3.2
+* Change `enum`s to `const enum`s
+
 ## 2.3.1
 * Stronger filtering capabilities with tuple-filter
 
