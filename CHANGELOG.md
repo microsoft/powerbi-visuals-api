@@ -1,5 +1,9 @@
 # Change Log - Power BI Cusrom Visuals API
 
+## 2.5.0
+* [Analytics Pane Support](../how-to-guide/analytics-properties/)
+* New methods to generate selections for Table rows and Matrix nodes have been added
+
 ## 2.3.2
 * Change `enum`s to `const enum`s
 
