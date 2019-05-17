@@ -50,6 +50,10 @@
         "supportsLandingPage": {
             "type": "boolean",
             "description": "Indicates whether the visual supports a landing page"
+        },
+        "supportsMultiVisualSelection": {
+            "type": "boolean",
+            "description": "Indicates whether the visual supports a multivisual selection"
         }
     },
     "additionalProperties": false,
