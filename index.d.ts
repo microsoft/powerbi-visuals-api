@@ -88,6 +88,7 @@ declare namespace powerbi {
         remove = 1,
     }
 }
+﻿
 
 declare module powerbi.visuals.plugins {
     /** This IVisualPlugin interface is only used by the CLI tools when compiling */
@@ -113,12 +114,15 @@ declare module powerbi.visuals.plugins {
     }
 }
 
+﻿
+
 declare module jsCommon {
     export interface IStringResourceProvider {
         get(id: string): string;
         getOptional(id: string): string;
     }
 }
+﻿
 
 declare module powerbi {
     /** 
@@ -266,15 +270,12 @@ declare module powerbi {
 
 declare module powerbi.visuals {
     import Selector = data.Selector;
-    import SelectorsByColumn = data.SelectorsByColumn;
-    
-    export interface CustomVisualOpaqueIdentity { }
+	import SelectorsByColumn = data.SelectorsByColumn;
+
     export interface ISelectionIdBuilder {
         withCategory(categoryColumn: DataViewCategoryColumn, index: number): this;
         withSeries(seriesColumn: DataViewValueColumns, valueColumn: DataViewValueColumn | DataViewValueColumnGroup): this;
         withMeasure(measureId: string): this;
-        withMatrixNode(matrixNode: DataViewMatrixNode, levels: DataViewHierarchyLevel[]): this;
-        withTable(table: DataViewTable, rowIndex: number): this;
         createSelectionId(): ISelectionId;
     }
     
@@ -287,6 +288,7 @@ declare module powerbi.visuals {
         hasIdentity(): boolean;
     }
 }
+﻿
 
 declare module powerbi {
     export const enum SortDirection {
@@ -294,11 +296,13 @@ declare module powerbi {
         Descending = 2,
     }
 }
+﻿
 
 declare module powerbi {
     export interface QueryTransformTypeDescriptor {
     }
 }
+﻿
 
 declare module powerbi {
     /** Represents views of a data set. */
@@ -447,7 +451,7 @@ declare module powerbi {
 
     export interface DataViewValueColumnGroup {
         values: DataViewValueColumn[];
-        identity?: visuals.CustomVisualOpaqueIdentity;
+        identity?: data.DataRepetitionSelector;
 
         /** The data repetition objects. */
         objects?: DataViewObjects;
@@ -458,7 +462,7 @@ declare module powerbi {
     export interface DataViewValueColumn extends DataViewCategoricalColumn {
         values: PrimitiveValue[];
         highlights?: PrimitiveValue[];
-        identity?: visuals.CustomVisualOpaqueIdentity;
+        identity?: data.DataRepetitionSelector;
     }
 
     // NOTE: The following is needed for backwards compatibility and should be deprecated.  Callers should use
@@ -468,7 +472,7 @@ declare module powerbi {
 
     export interface DataViewCategoryColumn extends DataViewCategoricalColumn {
         values: PrimitiveValue[];
-        identity?: visuals.CustomVisualOpaqueIdentity[];
+        identity?: data.DataRepetitionSelector[];
 
         /** The set of expressions that define the identity for instances of the category.  This must match items in the DataViewScopeIdentity in the identity. */
         identityFields?: data.ISQExpr[];
@@ -506,7 +510,7 @@ declare module powerbi {
         values?: { [id: number]: DataViewTreeNodeValue };
 
         children?: DataViewTreeNode[];
-        identity?: visuals.CustomVisualOpaqueIdentity;
+        identity?: data.DataRepetitionSelector;
 
         /** The data repetition objects. */
         objects?: DataViewObjects;
@@ -530,7 +534,7 @@ declare module powerbi {
     export interface DataViewTable {
         columns: DataViewMetadataColumn[];
 
-        identity?: visuals.CustomVisualOpaqueIdentity[];
+        identity?: data.DataRepetitionSelector[];
 
         /** The set of expressions that define the identity for rows of the table.  This must match items in the DataViewScopeIdentity in the identity. */
         identityFields?: data.ISQExpr[];
@@ -665,6 +669,7 @@ declare module powerbi {
     /** Defines the PrimitiveValue range. */
     export type PrimitiveValueRange = ValueRange<PrimitiveValue>;
 }
+﻿
 
 declare module powerbi {
     /** Represents evaluated, named, custom objects in a DataView. */
@@ -695,6 +700,7 @@ declare module powerbi {
 
     export type DataViewPropertyValue = PrimitiveValue | StructuralObjectValue;
 }
+﻿
 
 declare module powerbi.data {
     /** Defines a match against all instances of given roles. */
@@ -713,18 +719,22 @@ declare module powerbi.data {
         key: string;
     }
 }
+﻿
 
 declare module powerbi.data {
     import IStringResourceProvider = jsCommon.IStringResourceProvider;
 
     export type DisplayNameGetter = ((resourceProvider: IStringResourceProvider) => string) | string;
 }
+﻿
 
 declare module powerbi.data {
     //intentionally blank interfaces since this is not part of the public API
     export interface Selector { }
 
     export interface SelectorsByColumn { }
+
+    export interface DataRepetitionSelector { }	
 
     export interface ISemanticFilter { }
 
@@ -761,6 +771,7 @@ declare module powerbi.data {
         key: string;
     }
 }
+﻿
 
 declare module powerbi {
     export interface DefaultValueDefinition {
@@ -791,6 +802,7 @@ declare module powerbi {
     }
     
 }
+﻿
 
 declare module powerbi {
     export interface Fill {
@@ -828,6 +840,7 @@ declare module powerbi {
         nullable: boolean;
     }  
 }
+﻿
 
 declare module powerbi {
     export interface FillRule extends FillRuleGeneric<string, number, string> {
@@ -869,12 +882,14 @@ declare module powerbi {
         color?: TColor;
     }
 }
+﻿
 
 declare module powerbi {
     export interface FilterTypeDescriptor {
         selfFilter?: boolean;
     }
 }
+﻿
 
 declare module powerbi {
     export type GeoJson = GeoJsonDefinitionGeneric<string>;
@@ -887,6 +902,7 @@ declare module powerbi {
 
     export interface GeoJsonTypeDescriptor { }
 }
+﻿
 
 declare module powerbi {
     export type ImageValue = ImageDefinitionGeneric<string>;
@@ -900,6 +916,7 @@ declare module powerbi {
     export interface ImageTypeDescriptor { }
 
 }
+﻿
 
 declare module powerbi {
     import ISQExpr = powerbi.data.ISQExpr;
@@ -930,6 +947,7 @@ declare module powerbi {
         valueExpr?: ISQExpr;
     }
 }
+﻿
 
 declare module powerbi {
     import SemanticFilter = data.ISemanticFilter;
@@ -961,6 +979,7 @@ declare module powerbi {
         //etc.
     }
 }
+﻿
 
 declare module powerbi {
     /** Describes a data value type in the client type system. Can be used to get a concrete ValueType instance. */
@@ -1040,6 +1059,7 @@ declare module powerbi {
     /** Describes instances of value type objects. */
     export type PrimitiveValue = string | number | boolean | Date;
 }
+﻿
 
 declare module powerbi {
    
@@ -1056,6 +1076,7 @@ declare module powerbi {
     export interface DataBarsTypeDescriptor {
     }
 }
+﻿
 
 declare module powerbi {
     export interface IViewport {
@@ -1067,6 +1088,7 @@ declare module powerbi {
         scale: number;
     }
 }
+﻿
 
 declare module powerbi {
     import Selector = powerbi.data.Selector;
@@ -1161,6 +1183,8 @@ declare module powerbi {
     }
 }
 
+﻿
+
 declare module powerbi.extensibility {
 
     export interface IVisualPluginOptions {
@@ -1227,8 +1251,6 @@ declare module powerbi.extensibility {
         withCategory(categoryColumn: DataViewCategoryColumn, index: number): this;
         withSeries(seriesColumn: DataViewValueColumns, valueColumn: DataViewValueColumn | DataViewValueColumnGroup): this;
         withMeasure(measureId: string): this;
-        withMatrixNode(matrixNode: DataViewMatrixNode, levels: DataViewHierarchyLevel[]): this;
-        withTable(table: DataViewTable, rowIndex: number): this;
         createSelectionId(): ISelectionId;
     }
 }
@@ -1314,6 +1336,7 @@ declare module powerbi.extensibility {
         hide(options: TooltipHideOptions): void;
     }
 }
+﻿
 
 declare module powerbi.extensibility {
     interface ITelemetryService {
@@ -1340,7 +1363,7 @@ declare module powerbi.extensibility {
 }
 
 declare module powerbi.extensibility {
-    /**
+    /** 
      * Provides an access to local storage for read / write access 
      */
     export interface ILocalVisualStorageService {
@@ -1354,9 +1377,9 @@ declare module powerbi.extensibility {
 
         /**
          * Saves the data to local storage. This data can be later be retrieved using the 'key'.
-         * Returns a promise that resolves to the amount of free space available to caller after the save if there
-         * is any or rejects otherwise.
-         *
+         * Returns a promise that resolves to the amount of free space available to caller after the save if there 
+         * is any or rejects otherwise. 
+         * 
          * @param key - the name of the payload to store
          * @param data - the payload string to store
          * @returns the promise resolves to the amount of free space available or rejects if there is no free space to store the data
@@ -1373,8 +1396,8 @@ declare module powerbi.extensibility {
 }
 
 declare module powerbi.extensibility {
-    /**
-     * An interface for reporting rendering events
+    /** 
+     * An interface for reporting rendering events 
      */
     export interface IVisualEventService {
         /**
@@ -1438,6 +1461,7 @@ declare module powerbi.extensibility.visual {
         createLocalizationManager: () => ILocalizationManager;
         storageService: ILocalVisualStorageService;
         eventService: IVisualEventService;
+        switchFocusModeState: (on: boolean) => void;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {
@@ -1447,7 +1471,8 @@ declare module powerbi.extensibility.visual {
         viewMode?: ViewMode;
         editMode?: EditMode;
         operationKind?: VisualDataChangeOperationKind;
-        jsonFilters?: IFilter[]; 
+        jsonFilters?: IFilter[];
+        isInFocus?: boolean;
     }
 
     export interface VisualConstructorOptions extends extensibility.VisualConstructorOptions {

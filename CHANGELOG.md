@@ -1,5 +1,8 @@
 # Change Log - Power BI Cusrom Visuals API
 
+## 2.6.0
+* `subtotals` property. Specifies the subtotal customizations applied in the customizeQuery method
+
 ## 2.5.0
 * [Analytics Pane Support](../how-to-guide/analytics-properties/)
 * New methods to generate selections for Table rows and Matrix nodes have been added
