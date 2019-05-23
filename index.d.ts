@@ -270,12 +270,16 @@ declare module powerbi {
 
 declare module powerbi.visuals {
     import Selector = data.Selector;
-	import SelectorsByColumn = data.SelectorsByColumn;
+    import SelectorsByColumn = data.SelectorsByColumn;
+
+    export interface CustomVisualOpaqueIdentity { }
 
     export interface ISelectionIdBuilder {
         withCategory(categoryColumn: DataViewCategoryColumn, index: number): this;
         withSeries(seriesColumn: DataViewValueColumns, valueColumn: DataViewValueColumn | DataViewValueColumnGroup): this;
         withMeasure(measureId: string): this;
+        withMatrixNode(matrixNode: DataViewMatrixNode, levels: DataViewHierarchyLevel[]): this;
+        withTable(table: DataViewTable, rowIndex: number): this;
         createSelectionId(): ISelectionId;
     }
     
@@ -451,7 +455,7 @@ declare module powerbi {
 
     export interface DataViewValueColumnGroup {
         values: DataViewValueColumn[];
-        identity?: data.DataRepetitionSelector;
+        identity?: visuals.CustomVisualOpaqueIdentity;
 
         /** The data repetition objects. */
         objects?: DataViewObjects;
@@ -462,7 +466,7 @@ declare module powerbi {
     export interface DataViewValueColumn extends DataViewCategoricalColumn {
         values: PrimitiveValue[];
         highlights?: PrimitiveValue[];
-        identity?: data.DataRepetitionSelector;
+        identity?: visuals.CustomVisualOpaqueIdentity;
     }
 
     // NOTE: The following is needed for backwards compatibility and should be deprecated.  Callers should use
@@ -472,7 +476,7 @@ declare module powerbi {
 
     export interface DataViewCategoryColumn extends DataViewCategoricalColumn {
         values: PrimitiveValue[];
-        identity?: data.DataRepetitionSelector[];
+        identity?: visuals.CustomVisualOpaqueIdentity[];
 
         /** The set of expressions that define the identity for instances of the category.  This must match items in the DataViewScopeIdentity in the identity. */
         identityFields?: data.ISQExpr[];
@@ -510,7 +514,7 @@ declare module powerbi {
         values?: { [id: number]: DataViewTreeNodeValue };
 
         children?: DataViewTreeNode[];
-        identity?: data.DataRepetitionSelector;
+        identity?: visuals.CustomVisualOpaqueIdentity;
 
         /** The data repetition objects. */
         objects?: DataViewObjects;
@@ -534,7 +538,7 @@ declare module powerbi {
     export interface DataViewTable {
         columns: DataViewMetadataColumn[];
 
-        identity?: data.DataRepetitionSelector[];
+        identity?: visuals.CustomVisualOpaqueIdentity[];
 
         /** The set of expressions that define the identity for rows of the table.  This must match items in the DataViewScopeIdentity in the identity. */
         identityFields?: data.ISQExpr[];
@@ -733,8 +737,6 @@ declare module powerbi.data {
     export interface Selector { }
 
     export interface SelectorsByColumn { }
-
-    export interface DataRepetitionSelector { }	
 
     export interface ISemanticFilter { }
 
