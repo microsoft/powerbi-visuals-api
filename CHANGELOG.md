@@ -1,5 +1,8 @@
 # Change Log - Power BI Cusrom Visuals API
 
+## 3.2.0
+* `supportsMultiVisualSelection` multi selection capabilities for custom visuals
+
 ## 2.6.0
 * `subtotals` property specifies subtotal customizations applied in customizeQuery method
 
