@@ -1,4 +1,4 @@
-# Change Log - Power BI Cusrom Visuals API
+# Change Log - Power BI Custom Visuals API
 
 ## 2.6.0
 * `subtotals` property specifies subtotal customizations applied in customizeQuery method
