@@ -1,4 +1,4 @@
-# Change Log - Power BI Cusrom Visuals API
+# Change Log - Power BI Custom Visuals API
 
 ## 2.6.1
 * Add `fontFamily` as one of required properties of `formatting` object type.
