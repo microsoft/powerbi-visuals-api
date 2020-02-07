@@ -147,7 +147,7 @@
                     "$ref": "#/definitions/dataViewMapping.scriptResult"
                 }
             },
-            "oneOf": [
+            "anyOf": [
                 {
                     "required": [
                         "single"
