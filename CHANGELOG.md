@@ -1,5 +1,9 @@
 # Change Log - Power BI Custom Visuals API
 
+## 2.6.1
+* Add `fontFamily` as one of required properties of `formatting` object type.
+* Add `supportsMultiVisualSelection` to schema.
+
 ## 2.6.0
 * `subtotals` property specifies subtotal customizations applied in customizeQuery method
 
