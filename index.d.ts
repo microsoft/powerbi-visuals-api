@@ -1420,6 +1420,18 @@ declare module powerbi.extensibility {
     }
 }
 
+declare namespace powerbi.common {
+    export const enum CustomVisualHostEnv {
+        Web = 1 << 0,
+        PublishToWeb = 1 << 1,
+        Desktop = 1 << 2,
+        Embed = 1 << 3,
+        ReportServer = 1 << 4,
+        ExportReportHost = 1 << 5,
+        Mobile = 1 << 6
+    }
+}
+
 declare module powerbi {
     export interface IFilter { }
 }
@@ -1465,6 +1477,7 @@ declare module powerbi.extensibility.visual {
         storageService: ILocalVisualStorageService;
         eventService: IVisualEventService;
         switchFocusModeState: (on: boolean) => void;
+        hostEnv: powerbi.common.CustomVisualHostEnv;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {
