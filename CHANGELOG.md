@@ -7,6 +7,9 @@
 * Add `fontFamily` as one of required properties of `formatting` object type.
 * Add `supportsMultiVisualSelection` to schema.
 
+## 3.2.0
+* `supportsMultiVisualSelection` multi selection capabilities for custom visuals
+
 ## 2.6.0
 * `subtotals` property specifies subtotal customizations applied in customizeQuery method
 

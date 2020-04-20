@@ -1,6 +1,6 @@
 {
   "name": "powerbi-visuals-api",
-  "version": "2.6.2",
+  "version": "3.2.0",
   "description": "Power BI Custom Visuals API type definitions for typescript",
   "types": "index",
   "main": "index.js",
@@ -17,7 +17,7 @@
   },
   "homepage": "https://microsoft.github.io/PowerBI-visuals",
   "dependencies": {
-    "semver": "^7.1.2"
+    "semver": "^7.3.2"
   },
   "devDependencies": {
     "jasmine": "^3.5.0"
