@@ -1,7 +1,7 @@
 # Change Log - Power BI Custom Visuals API
 
 ## 3.4.0
-* `fetchMoreData` : new `aggregateSegments` parameter (default true).
+* `fetchMoreData` : new `aggregateSegments` parameter (default true), for supporting no-aggregation fetchMoreData.
 
 ## 3.2.0
 * `supportsMultiVisualSelection` multi selection capabilities for custom visuals
