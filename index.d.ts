@@ -10,6 +10,7 @@ declare namespace powerbi {
     const enum VisualDataChangeOperationKind {
         Create = 0,
         Append = 1,
+        Segment = 2,
     }
     const enum VisualUpdateType {
         Data = 2,
@@ -1470,7 +1471,7 @@ declare module powerbi.extensibility.visual {
         locale: string;
         allowInteractions: boolean;
         launchUrl: (url: string) => void;
-        fetchMoreData: () => boolean;
+        fetchMoreData: (aggregateSegments?: boolean) => boolean;
         instanceId: string;
         refreshHostData: () => void;
         createLocalizationManager: () => ILocalizationManager;
