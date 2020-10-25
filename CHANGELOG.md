@@ -1,4 +1,8 @@
 # Change Log - Power BI Custom Visuals API
+## 3.5.0
+* `VisualEnumerationInstanceKinds` : add enum to support different formatting kinds
+* `VisualObjectInstance` : new `propertyInstanceKind` and `altConstantValueSelector` optional properties to support conditional formatting.
+
 
 ## 3.4.0
 * `fetchMoreData` : new `aggregateSegments` parameter (default true), for supporting no-aggregation fetchMoreData.
