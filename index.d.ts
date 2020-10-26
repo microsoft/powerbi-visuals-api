@@ -1116,7 +1116,7 @@ declare module powerbi {
         /** The selector that identifies this object. */
         selector: Selector;
 
-        /** Additional selector used for conditional formatting at the static level to optimize perf. */
+        /** Additional selector used for conditional formatting at the static level for performance optimization. */
         altConstantValueSelector?: Selector;
 
         /** (Optional) Defines the constrained set of valid values for a property. */
@@ -1132,7 +1132,7 @@ declare module powerbi {
             [propertyName: string]: ValueTypeDescriptor;
         };
 
-        /** (Optional) Description of the type of instance that the property pane should show. If it doesn't exist, we assume constant only. */
+        /** (Optional) Description of the type of instance that the property pane should display. If it doesn't exist, we assume constant only. */
         propertyInstanceKind?: {
             [propertyName: string]: VisualEnumerationInstanceKinds;
         };

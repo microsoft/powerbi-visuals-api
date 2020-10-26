@@ -1,6 +1,6 @@
 # Change Log - Power BI Custom Visuals API
 ## 3.5.0
-* `VisualEnumerationInstanceKinds` : add enum to support different formatting kinds
+* `VisualEnumerationInstanceKinds` : add enum to support different formatting types
 * `VisualObjectInstance` : new `propertyInstanceKind` and `altConstantValueSelector` optional properties to support conditional formatting.
 
 
