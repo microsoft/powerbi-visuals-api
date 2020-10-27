@@ -1095,6 +1095,12 @@ declare module powerbi {
 declare module powerbi {
     import Selector = powerbi.data.Selector;
 
+    export const enum VisualEnumerationInstanceKinds {
+        Constant = 1 << 0,
+        Rule = 1 << 1,
+        ConstantOrRule = Constant | Rule,
+    }
+
     export interface VisualObjectInstance {
         /** The name of the object (as defined in VisualCapabilities). */
         objectName: string;
@@ -1110,6 +1116,9 @@ declare module powerbi {
         /** The selector that identifies this object. */
         selector: Selector;
 
+        /** Additional selector used for conditional formatting at the static level for performance optimization. */
+        altConstantValueSelector?: Selector;
+
         /** (Optional) Defines the constrained set of valid values for a property. */
         validValues?: {
             [propertyName: string]: string[] | ValidationOptions;
@@ -1121,6 +1130,11 @@ declare module powerbi {
         /** (Optional) Set the required type for particular properties that support variant types. */
         propertyTypes?: {
             [propertyName: string]: ValueTypeDescriptor;
+        };
+
+        /** (Optional) Description of the type of instance that the property pane should display. If it doesn't exist, we assume constant only. */
+        propertyInstanceKind?: {
+            [propertyName: string]: VisualEnumerationInstanceKinds;
         };
     }
 
