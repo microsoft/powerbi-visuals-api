@@ -51,6 +51,10 @@
             "type": "boolean",
             "description": "Indicates whether the visual supports a landing page"
         },
+        "supportsEmptyDataView": {
+            "type": "boolean",
+            "description": "Indicates whether the visual can receive formatting pain properties when he has no dataroles"
+        },
         "supportsMultiVisualSelection": {
             "type": "boolean",
             "description": "Indicates whether the visual supports multi selection"
