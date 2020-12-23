@@ -1,7 +1,7 @@
 # Change Log - Power BI Custom Visuals API
 
 ## 3.6.0
-* `supportsEmptyDataView` : added the "supportsEmptyDataView" as a capability, this should allow visuals to receive formatting properties even if they don't have any data roles.
+* `supportsEmptyDataView` : added the "supportsEmptyDataView" as a capability, enables visuals to receive formatting properties even if they don't have any data roles.
 
 ## 3.5.1
 * `VisualEnumerationInstanceKinds` : add enum to support different formatting types
