@@ -53,7 +53,7 @@
         },
         "supportsEmptyDataView": {
             "type": "boolean",
-            "description": "Indicates whether the visual can receive formatting pane properties when he has no dataroles"
+            "description": "Indicates whether the visual can receive formatting pane properties when it has no dataroles"
         },
         "supportsMultiVisualSelection": {
             "type": "boolean",
