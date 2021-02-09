@@ -88,6 +88,18 @@ declare namespace powerbi {
         /** removing existing filter. */
         remove = 1,
     }
+    const enum DialogAction {
+        Close = 0,
+        OK = 1,
+        Cancel = 2,
+        Abort = 3,
+        Retry = 4,
+        Apply = 5,
+        Accept = 6,
+        Discard = 7,
+        No = 8,
+        Yes = 9
+    }
 }
 
 
@@ -99,6 +111,9 @@ declare module powerbi.visuals.plugins {
 
         /** Function to call to create the visual. */
         create: (options?: extensibility.VisualConstructorOptions) => extensibility.IVisual;
+
+        /** Function to call to create a modal dialog. */
+        createModalDialog?: (dialogId: string, options: extensibility.visual.DialogConstructorOptions, initialState: object) => void;
 
         /** The class of the plugin.  At the moment it is only used to have a way to indicate the class name that a custom visual has. */
         class: string;
@@ -114,7 +129,6 @@ declare module powerbi.visuals.plugins {
 
     }
 }
-
 
 
 declare module jsCommon {
@@ -1486,6 +1500,7 @@ declare module powerbi.extensibility.visual {
         allowInteractions: boolean;
         launchUrl: (url: string) => void;
         fetchMoreData: (aggregateSegments?: boolean) => boolean;
+        openModalDialog: (dialogId: string, options?: DialogOpenOptions, initialState?: object) => IPromise<ModalDialogResult>;
         instanceId: string;
         refreshHostData: () => void;
         createLocalizationManager: () => ILocalizationManager;
@@ -1509,6 +1524,26 @@ declare module powerbi.extensibility.visual {
     export interface VisualConstructorOptions extends extensibility.VisualConstructorOptions {
         element: HTMLElement;
         host: IVisualHost;
+    }
+
+    export interface DialogConstructorOptions {
+        element: HTMLElement;
+        host: IDialogHost;
+    }
+
+    export interface IDialogHost {
+        setResult: (resultState: object) => void;
+        close: (actionId: DialogAction, resultState?: object) => void;
+    }
+
+    export interface DialogOpenOptions {
+        title: string;
+        actionButtons: DialogAction[];
+    }
+
+    export interface ModalDialogResult {
+        actionId: DialogAction;
+        resultState: object;
     }
 }
 

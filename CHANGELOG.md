@@ -1,5 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
+## 3.7.0
+* `openModalDialog` : display an interactive modal dialog window.
+
 ## 3.5.1
 * `VisualEnumerationInstanceKinds` : add enum to support different formatting types
 * `VisualObjectInstance` : new `propertyInstanceKind` and `altConstantValueSelector` optional properties to support conditional formatting.
