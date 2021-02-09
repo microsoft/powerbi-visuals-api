@@ -3,6 +3,9 @@
 ## 3.7.0
 * `openModalDialog` : display an interactive modal dialog window.
 
+## 3.6.0
+* `supportsEmptyDataView` : added the "supportsEmptyDataView" as a capability, enables visuals to receive formatting properties even if they don't have any data roles.
+
 ## 3.5.1
 * `VisualEnumerationInstanceKinds` : add enum to support different formatting types
 * `VisualObjectInstance` : new `propertyInstanceKind` and `altConstantValueSelector` optional properties to support conditional formatting.
