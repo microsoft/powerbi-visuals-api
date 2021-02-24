@@ -1374,9 +1374,18 @@ declare module powerbi.extensibility {
     }
 }
 
+declare module powerbi {
+    export interface AuthenticationToken {
+        payload: string;
+        resourceUrl:string;
+    }
+}
+
 declare module powerbi.extensibility {
     export interface IAuthenticationService {
         getAADToken(visualId?: string): IPromise<string>;
+        getResourceUrl(visualId?: string): IPromise<string>;
+        getAADAuthenticationToken(visualId?: string): IPromise<powerbi.AuthenticationToken>;
     }
 }
 
