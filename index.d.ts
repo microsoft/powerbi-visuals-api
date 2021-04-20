@@ -1502,6 +1502,7 @@ declare module powerbi.extensibility.visual {
         eventService: IVisualEventService;
         switchFocusModeState: (on: boolean) => void;
         hostEnv: powerbi.common.CustomVisualHostEnv;
+        displayWarningIcon: (hoverText: string, detailedText: string) => void;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {

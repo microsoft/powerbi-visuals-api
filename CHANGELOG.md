@@ -1,5 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
+## 3.7.0
+* `displayWarningIcon` : enables visuals to display a warning icon with customized text and details.
+
 ## 3.6.0
 * `supportsEmptyDataView` : added the "supportsEmptyDataView" as a capability, enables visuals to receive formatting properties even if they don't have any data roles.
 
