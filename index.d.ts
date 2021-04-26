@@ -1242,6 +1242,11 @@ declare module powerbi.extensibility {
         /** The loaded module, if any, defined by the IVisualPlugin.module. */
         module?: any;
     }
+
+    export interface HostCapabilities {
+        allowInteractions?: boolean;
+        allowModalDialog?: boolean;
+    }
 }
 
 
@@ -1506,7 +1511,7 @@ declare module powerbi.extensibility.visual {
         telemetry: ITelemetryService;
         authenticationService: IAuthenticationService;
         locale: string;
-        allowInteractions: boolean;
+        hostCapabilities: HostCapabilities;
         launchUrl: (url: string) => void;
         fetchMoreData: (aggregateSegments?: boolean) => boolean;
         openModalDialog: (dialogId: string, options?: DialogOpenOptions, initialState?: object) => IPromise<ModalDialogResult>;
