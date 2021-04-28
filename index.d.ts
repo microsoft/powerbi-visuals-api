@@ -88,17 +88,13 @@ declare namespace powerbi {
         /** removing existing filter. */
         remove = 1,
     }
-    const enum DialogAction {
+    export enum DialogAction {
         Close = 0,
         OK = 1,
         Cancel = 2,
-        Abort = 3,
-        Retry = 4,
-        Apply = 5,
-        Accept = 6,
-        Discard = 7,
-        No = 8,
-        Yes = 9
+        Continue = 3,
+        No = 4,
+        Yes = 5
     }
 }
 
