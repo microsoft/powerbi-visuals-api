@@ -88,6 +88,14 @@ declare namespace powerbi {
         /** removing existing filter. */
         remove = 1,
     }
+    export enum DialogAction {
+        Close = 0,
+        OK = 1,
+        Cancel = 2,
+        Continue = 3,
+        No = 4,
+        Yes = 5
+    }
 }
 
 
@@ -99,6 +107,9 @@ declare module powerbi.visuals.plugins {
 
         /** Function to call to create the visual. */
         create: (options?: extensibility.VisualConstructorOptions) => extensibility.IVisual;
+
+        /** Function to call to create a modal dialog. */
+        createModalDialog?: (dialogId: string, options: extensibility.visual.DialogConstructorOptions, initialState: object) => void;
 
         /** The class of the plugin.  At the moment it is only used to have a way to indicate the class name that a custom visual has. */
         class: string;
@@ -114,7 +125,6 @@ declare module powerbi.visuals.plugins {
 
     }
 }
-
 
 
 declare module jsCommon {
@@ -1228,6 +1238,11 @@ declare module powerbi.extensibility {
         /** The loaded module, if any, defined by the IVisualPlugin.module. */
         module?: any;
     }
+
+    export interface HostCapabilities {
+        allowInteractions?: boolean;
+        allowModalDialog?: boolean;
+    }
 }
 
 
@@ -1492,9 +1507,10 @@ declare module powerbi.extensibility.visual {
         telemetry: ITelemetryService;
         authenticationService: IAuthenticationService;
         locale: string;
-        allowInteractions: boolean;
+        hostCapabilities: HostCapabilities;
         launchUrl: (url: string) => void;
         fetchMoreData: (aggregateSegments?: boolean) => boolean;
+        openModalDialog: (dialogId: string, options?: DialogOpenOptions, initialState?: object) => IPromise<ModalDialogResult>;
         instanceId: string;
         refreshHostData: () => void;
         createLocalizationManager: () => ILocalizationManager;
@@ -1520,6 +1536,26 @@ declare module powerbi.extensibility.visual {
         element: HTMLElement;
         host: IVisualHost;
     }
+
+    export interface DialogConstructorOptions {
+        element: HTMLElement;
+        host: IDialogHost;
+    }
+
+    export interface IDialogHost {
+        setResult: (resultState: object) => void;
+        close: (actionId: DialogAction, resultState?: object) => void;
+    }
+
+    export interface DialogOpenOptions {
+        actionButtons: DialogAction[];
+    }
+
+    export interface ModalDialogResult {
+        actionId: DialogAction;
+        resultState: object;
+    }
+
 }
 
 export default powerbi;

@@ -1,5 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
+## 3.8.0
+* `openModalDialog` : display an interactive modal dialog window.
+
 ## 3.7.0
 * `displayWarningIcon` : enables visuals to display a warning icon with customized text and details.
 
