@@ -88,7 +88,7 @@ declare namespace powerbi {
         /** removing existing filter. */
         remove = 1,
     }
-    export enum DialogAction {
+    const enum DialogAction {
         Close = 0,
         OK = 1,
         Cancel = 2,
