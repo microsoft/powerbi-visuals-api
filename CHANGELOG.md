@@ -1,6 +1,6 @@
 # Change Log - Power BI Custom Visuals API
 
-## 3.8.1
+## 3.8.2
 * `openModalDialog` : display an interactive modal dialog window.
 
 ## 3.7.0
