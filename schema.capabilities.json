@@ -721,6 +721,10 @@
                         "type": "string",
                         "description": "The name of the data role to bind the tooltips selected info to"
                     }
+                },
+                "supportEnhancedTooltips": {
+                    "type": "boolean",
+                    "description": "Indicates whether the visual support modern tooltip feature"
                 }
             }
         },
