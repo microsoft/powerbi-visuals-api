@@ -1,5 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
+## 3.8.4
+* Fixed `create` interface.
+
 ## 3.8.3
 * `supportEnhancedTooltips` : added the "supportEnhancedTooltips" as a capability, it enables modern visual tooltip which includes data point drill actions and updated styling.
 
