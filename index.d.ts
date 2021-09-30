@@ -96,6 +96,10 @@ declare namespace powerbi {
         No = 4,
         Yes = 5
     }
+    const enum VisualDialogPositionType {
+        Center = 0,
+        RelativeToVisual = 1
+    }
 }
 
 
@@ -1547,7 +1551,21 @@ declare module powerbi.extensibility.visual {
         close: (actionId: DialogAction, resultState?: object) => void;
     }
 
+    export interface VisualDialogPosition {
+        type: VisualDialogPositionType;
+        left?: number;
+        top?: number;
+    }
+
+    export interface RectSize {
+        width: number;
+        height: number;
+    }
+
     export interface DialogOpenOptions {
+        title: string;
+        size?: RectSize;
+        position?: VisualDialogPosition;
         actionButtons: DialogAction[];
     }
 
@@ -1555,7 +1573,6 @@ declare module powerbi.extensibility.visual {
         actionId: DialogAction;
         resultState: object;
     }
-
 }
 
 export default powerbi;
