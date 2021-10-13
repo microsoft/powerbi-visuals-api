@@ -1463,6 +1463,15 @@ declare module powerbi.extensibility {
     }
 }
 
+declare module powerbi.extensibility {
+    /** 
+     * Provides functionality to save visual content as file
+     */
+     export interface IDownloadService {
+        exportVisualsContent(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<boolean>;
+    }
+}
+
 declare namespace powerbi.common {
     export const enum CustomVisualHostEnv {
         Web = 1 << 0,
@@ -1519,6 +1528,7 @@ declare module powerbi.extensibility.visual {
         refreshHostData: () => void;
         createLocalizationManager: () => ILocalizationManager;
         storageService: ILocalVisualStorageService;
+        downloadService: IDownloadService;
         eventService: IVisualEventService;
         switchFocusModeState: (on: boolean) => void;
         hostEnv: powerbi.common.CustomVisualHostEnv;
