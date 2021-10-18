@@ -1,5 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
+# 4.0.0
+* `openModalDialog` enhancements: allow defining the dialog's size, position and title.
+
 ## 3.8.4
 * Fixed `create` interface.
 

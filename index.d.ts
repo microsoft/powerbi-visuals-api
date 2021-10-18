@@ -96,6 +96,10 @@ declare namespace powerbi {
         No = 4,
         Yes = 5
     }
+    const enum VisualDialogPositionType {
+        Center = 0,
+        RelativeToVisual = 1
+    }
 }
 
 
@@ -1459,6 +1463,15 @@ declare module powerbi.extensibility {
     }
 }
 
+declare module powerbi.extensibility {
+    /** 
+     * Provides functionality to save visual content as file
+     */
+     export interface IDownloadService {
+        exportVisualsContent(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<boolean>;
+    }
+}
+
 declare namespace powerbi.common {
     export const enum CustomVisualHostEnv {
         Web = 1 << 0,
@@ -1515,6 +1528,7 @@ declare module powerbi.extensibility.visual {
         refreshHostData: () => void;
         createLocalizationManager: () => ILocalizationManager;
         storageService: ILocalVisualStorageService;
+        downloadService: IDownloadService;
         eventService: IVisualEventService;
         switchFocusModeState: (on: boolean) => void;
         hostEnv: powerbi.common.CustomVisualHostEnv;
@@ -1547,7 +1561,21 @@ declare module powerbi.extensibility.visual {
         close: (actionId: DialogAction, resultState?: object) => void;
     }
 
+    export interface VisualDialogPosition {
+        type: VisualDialogPositionType;
+        left?: number;
+        top?: number;
+    }
+
+    export interface RectSize {
+        width: number;
+        height: number;
+    }
+
     export interface DialogOpenOptions {
+        title: string;
+        size?: RectSize;
+        position?: VisualDialogPosition;
         actionButtons: DialogAction[];
     }
 
@@ -1555,7 +1583,6 @@ declare module powerbi.extensibility.visual {
         actionId: DialogAction;
         resultState: object;
     }
-
 }
 
 export default powerbi;
