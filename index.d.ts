@@ -665,6 +665,9 @@ declare module powerbi {
          * In visual DataView, this array is sorted in projection order.
          */
         sources: DataViewMetadataColumn[];
+
+        /** If TRUE, this level can be expanded/collapsed */
+        canBeExpanded?: boolean;
     }
 
     export interface DataViewKpiColumnMetadata {
