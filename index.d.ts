@@ -1414,6 +1414,13 @@ declare module powerbi.extensibility {
      */
     export interface ILocalVisualStorageService {
         /**
+         * Checks if the local storage usage is enabled for use.
+         * 
+         * @returns true if the local storage is enabled and false otherwise
+         */
+        enabled(): IPromise<boolean>;
+
+        /**
          * Returns promise that resolves to the data associated with 'key' if it was found or rejects otherwise.
          * 
          * @param key - the name of the payload to retrieve
