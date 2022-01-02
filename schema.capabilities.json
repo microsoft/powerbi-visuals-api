@@ -27,6 +27,9 @@
         "drilldown": {
             "$ref": "#/definitions/drilldown"
         },
+        "expandCollapse": {
+            "$ref": "#/definitions/expandCollapse"
+        },
         "suppressDefaultTitle": {
             "type": "boolean",
             "description": "Indicates whether the visual should show a default title"
@@ -873,6 +876,28 @@
                     "items": {
                         "type": "string",
                         "description": "The name of the role"
+                    }
+                }
+            }
+        },
+        "expandCollapse": {
+            "type": "object",
+            "description": "Defines the visual's expandCollapse capability",
+            "properties": {
+                "roles": {
+                    "type": "array",
+                    "description": "The expandCollapsed role names for this visual",
+                    "items": {
+                        "type": "string",
+                        "description": "The name of the role"
+                    }
+                },
+                "addDataViewFlags": {
+                    "type": "object",
+                    "description": "The data view flags",
+                    "defaultValue": {
+                        "type": "boolean",
+                        "description": "indicates if the DataViewTreeNode will contain the isCollapsed flag by default"
                     }
                 }
             }
