@@ -1064,6 +1064,10 @@
                         "fontFamily": {
                             "type": "boolean",
                             "description": "Displays a dropdown with font families"
+                        },
+                        "formatString": {
+                            "type": "boolean",
+                            "description": "Displays dynamic format string"
                         }
                     },
                     "additionalProperties": false,
@@ -1086,6 +1090,11 @@
                         {
                             "required": [
                                 "fontFamily"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "formatString"
                             ]
                         }
                     ]
