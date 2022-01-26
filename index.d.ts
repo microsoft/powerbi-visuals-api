@@ -1279,7 +1279,7 @@ declare module powerbi.extensibility {
     }
 
     interface ISelectionManager {
-        toggleExpandCollapse(selectionId: ISelectionId): IPromise<{}>;
+        toggleExpandCollapse(selectionId: ISelectionId, entireLevel?: boolean): IPromise<{}>;
         showContextMenu(selectionId: ISelectionId, position: IPoint, dataRoles?: string): IPromise<{}>
         select(selectionId: ISelectionId | ISelectionId[], multiSelect?: boolean): IPromise<ISelectionId[]>;
         hasSelection(): boolean;
