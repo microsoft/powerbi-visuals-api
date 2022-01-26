@@ -933,8 +933,16 @@
                     "description": "The data view flags",
                     "defaultValue": {
                         "type": "boolean",
-                        "description": "indicates if the DataViewTreeNode will contain the isCollapsed flag by default"
+                        "description": "Indicates if the DataViewTreeNode will contain the isCollapsed flag by default"
                     }
+                },
+                "supportsMerge": {
+                    "type": "boolean",
+                    "description": "Indicates that the expansion state should be updated when query projections change, instead of being reset."
+                },
+                "restoreProjectionsOrderFromBookmark": {
+                    "type": "boolean",
+                    "description": "Indicates that the bookmarked expansion state should be restored even if the query projections order no longer matches the expansion state levels."
                 }
             }
         },
