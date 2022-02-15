@@ -10,6 +10,10 @@
     "visuals",
     "visualization"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/powerbi-visuals-api.git"
+  },
   "author": "Microsoft",
   "license": "MIT",
   "bugs": {
