@@ -535,6 +535,13 @@ declare module powerbi {
 
         /** The set of expressions that define the identity for the child nodes.  This must match items in the DataViewScopeIdentity of those nodes. */
         childIdentityFields?: data.ISQExpr[];
+
+        /**
+         * TRUE if the node is Collapsed
+         * FALSE if it is Expanded
+         * Undefined if it cannot be Expanded (e.g. subtotal)
+         */
+        isCollapsed?: boolean;
     }
 
     export interface DataViewTreeNodeValue {
@@ -658,6 +665,9 @@ declare module powerbi {
          * In visual DataView, this array is sorted in projection order.
          */
         sources: DataViewMetadataColumn[];
+
+        /** If TRUE, this level can be expanded/collapsed */
+        canBeExpanded?: boolean;
     }
 
     export interface DataViewKpiColumnMetadata {
@@ -1269,7 +1279,8 @@ declare module powerbi.extensibility {
     }
 
     interface ISelectionManager {
-        showContextMenu(selectionId: ISelectionId, position: IPoint): IPromise<{}>;
+        toggleExpandCollapse(selectionId: ISelectionId): IPromise<{}>;
+        showContextMenu(selectionId: ISelectionId, position: IPoint, dataRoles?: string): IPromise<{}>
         select(selectionId: ISelectionId | ISelectionId[], multiSelect?: boolean): IPromise<ISelectionId[]>;
         hasSelection(): boolean;
         clear(): IPromise<{}>;
@@ -1396,7 +1407,7 @@ declare module powerbi.extensibility {
 declare module powerbi {
     export interface AuthenticationToken {
         payload: string;
-        resourceUrl:string;
+        resourceUrl: string;
     }
 }
 
@@ -1467,7 +1478,7 @@ declare module powerbi.extensibility {
     /** 
      * Provides functionality to save visual content as file
      */
-     export interface IDownloadService {
+    export interface IDownloadService {
         exportVisualsContent(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<boolean>;
     }
 }
