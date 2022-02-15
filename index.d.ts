@@ -1279,7 +1279,7 @@ declare module powerbi.extensibility {
     }
 
     interface ISelectionManager {
-        toggleExpandCollapse(selectionId: ISelectionId): IPromise<{}>;
+        toggleExpandCollapse(selectionId: ISelectionId, entireLevel?: boolean): IPromise<{}>;
         showContextMenu(selectionId: ISelectionId, position: IPoint, dataRoles?: string): IPromise<{}>
         select(selectionId: ISelectionId | ISelectionId[], multiSelect?: boolean): IPromise<ISelectionId[]>;
         hasSelection(): boolean;
@@ -1424,6 +1424,13 @@ declare module powerbi.extensibility {
      * Provides an access to local storage for read / write access 
      */
     export interface ILocalVisualStorageService {
+        /**
+         * Checks if the local storage usage is enabled for use.
+         * 
+         * @returns true if the local storage is enabled and false otherwise
+         */
+        enabled(): IPromise<boolean>;
+
         /**
          * Returns promise that resolves to the data associated with 'key' if it was found or rejects otherwise.
          * 

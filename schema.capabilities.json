@@ -1,6 +1,13 @@
 {
     "type": "object",
     "properties": {
+        "privileges": {
+            "type": "array",
+            "description": "Defines required privileges for the visual",
+            "items": {
+                "$ref": "#/definitions/privilege"
+            }
+        },
         "dataRoles": {
             "type": "array",
             "description": "Defines data roles for the visual",
@@ -69,6 +76,35 @@
     },
     "additionalProperties": false,
     "definitions": {
+        "privilege": {
+            "type": "object",
+            "description": "privilege - Defines the name, essentiality, and optional parameters for a privilege",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The internal name of the privilege",
+                    "enum": [
+                        "WebAccess",
+                        "LocalStorage"
+                    ]
+                },
+                "essential": {
+                    "type": "boolean",
+                    "description": "Determines if the privilege is essential for the visual. Default value is false"
+                },
+                "parameters": {
+                    "type": "array",
+                    "description": "Determines a list of privilege parameters if any",
+                    "items": {
+                        "type": "string",
+                        "description": "The privilege parameter"
+                    }
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
         "dataRole": {
             "type": "object",
             "description": "dataRole - Defines the name, displayName, and kind of a data role",
@@ -897,8 +933,16 @@
                     "description": "The data view flags",
                     "defaultValue": {
                         "type": "boolean",
-                        "description": "indicates if the DataViewTreeNode will contain the isCollapsed flag by default"
+                        "description": "Indicates if the DataViewTreeNode will contain the isCollapsed flag by default"
                     }
+                },
+                "supportsMerge": {
+                    "type": "boolean",
+                    "description": "Indicates that the expansion state should be updated when query projections change, instead of being reset."
+                },
+                "restoreProjectionsOrderFromBookmark": {
+                    "type": "boolean",
+                    "description": "Indicates that the bookmarked expansion state should be restored even if the query projections order no longer matches the expansion state levels."
                 }
             }
         },
@@ -1064,6 +1108,10 @@
                         "fontFamily": {
                             "type": "boolean",
                             "description": "Displays a dropdown with font families"
+                        },
+                        "formatString": {
+                            "type": "boolean",
+                            "description": "Displays dynamic format string"
                         }
                     },
                     "additionalProperties": false,
@@ -1086,6 +1134,11 @@
                         {
                             "required": [
                                 "fontFamily"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "formatString"
                             ]
                         }
                     ]
