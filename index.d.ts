@@ -100,6 +100,34 @@ declare namespace powerbi {
         Center = 0,
         RelativeToVisual = 1
     }
+
+    export const enum ServicePlanState {
+        /** Indicates that the license is not active and shouldn't be used for provisioning benefits.  */
+        Inactive = 0,
+
+        /** Indicates that the license is active and can be used for provisioning benefits. */
+        Active = 1,
+
+        /** Indicates that the license is in grace period likely due to payment violation. */
+        Warning = 2,
+
+        /** Indicates that the license is suspended likely due to Payment violation. */
+        Suspended = 3,
+
+        /** Sentinel value. */
+        Unknown = 4
+    }
+
+    export const enum LicenseNotificationType {
+        /** Used by the visual to display an icon license notification, display "upgrade" button. */
+        General = 0,
+
+        /** Used by the visual to display an unsupported environment license notification */
+        UnsupportedEnv = 1,
+        
+        /** Used by the visual to display a blocker license notification, display "upgrade" button */
+        VisualIsBlocked = 2,
+    }
 }
 
 
@@ -1482,6 +1510,15 @@ declare module powerbi.extensibility {
 }
 
 declare module powerbi.extensibility {
+    export interface IVisualLicenseManager {
+        getAvailableServicePlans(): IPromise<visual.LicenseInfoResult>;
+        notifyLicenseRequired(notificationType: LicenseNotificationType): IPromise<boolean>;
+        notifyFeatureBlocked(tooltip: string): IPromise<boolean>;
+        clearLicenseNotification(): IPromise<boolean>;
+    }
+}
+
+declare module powerbi.extensibility {
     /** 
      * Provides functionality to save visual content as file
      */
@@ -1551,6 +1588,7 @@ declare module powerbi.extensibility.visual {
         switchFocusModeState: (on: boolean) => void;
         hostEnv: powerbi.common.CustomVisualHostEnv;
         displayWarningIcon: (hoverText: string, detailedText: string) => void;
+        licenseManager: IVisualLicenseManager;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {
@@ -1600,6 +1638,22 @@ declare module powerbi.extensibility.visual {
     export interface ModalDialogResult {
         actionId: DialogAction;
         resultState: object;
+    }
+
+    export interface ServicePlan {
+        spIdentifier: string;
+        state: ServicePlanState;
+    }
+
+    export interface LicenseInfoResult {
+        /** An array of Service Plans purchased by the active user for this visual */
+        plans: ServicePlan[] | undefined;
+
+        /** Indicates that the visual is being rendered in a Power BI environment that doesn't support licenses management or enforcement. */
+        isLicenseUnsupportedEnv: boolean;
+
+        /** If false, indicates that the licenses info could not be retrieved. */
+        isLicenseInfoAvailable: boolean; 
     }
 }
 
