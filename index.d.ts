@@ -111,7 +111,7 @@ declare namespace powerbi {
         /** Indicates that the license is in grace period likely due to payment violation. */
         Warning = 2,
 
-        /** Indicates that the license is suspended likely due to Payment violation. */
+        /** Indicates that the license is suspended likely due to payment violation. */
         Suspended = 3,
 
         /** Sentinel value. */
@@ -122,10 +122,10 @@ declare namespace powerbi {
         /** Used by the visual to display an icon license notification, display "upgrade" button. */
         General = 0,
 
-        /** Used by the visual to display an unsupported environment license notification */
+        /** Used by the visual to display an unsupported environment license notification, "upgrade" button won't be displayed. */
         UnsupportedEnv = 1,
         
-        /** Used by the visual to display a blocker license notification, display "upgrade" button */
+        /** Used by the visual to display a blocker license notification, display "upgrade" button. */
         VisualIsBlocked = 2,
     }
 }
@@ -1652,7 +1652,7 @@ declare module powerbi.extensibility.visual {
         /** Indicates that the visual is being rendered in a Power BI environment that doesn't support licenses management or enforcement. */
         isLicenseUnsupportedEnv: boolean;
 
-        /** If false, indicates that the licenses info could not be retrieved. */
+        /** Indicates whether the licenses info could be retrieved. */
         isLicenseInfoAvailable: boolean; 
     }
 }
