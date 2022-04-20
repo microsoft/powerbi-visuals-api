@@ -85,7 +85,8 @@
                     "description": "The internal name of the privilege",
                     "enum": [
                         "WebAccess",
-                        "LocalStorage"
+                        "LocalStorage",
+                        "ExportContent"
                     ]
                 },
                 "essential": {
