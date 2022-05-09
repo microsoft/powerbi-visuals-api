@@ -1593,6 +1593,9 @@ declare module powerbi.extensibility.visual {
 
         /** Gets the set of objects that the visual is currently displaying. */
         enumerateObjectInstances?(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstanceEnumeration;
+        
+        /** Gets the settings to display in the formatting pane */
+        getFormattingModel?(): any;
     }
 
     export interface IVisualHost extends extensibility.IVisualHost {
