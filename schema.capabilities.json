@@ -74,6 +74,9 @@
             "$ref": "#/definitions/subtotals"
         }
     },
+    "required": [
+        "privileges"
+    ],
     "additionalProperties": false,
     "definitions": {
         "privilege": {
