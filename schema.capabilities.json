@@ -75,7 +75,7 @@
         },
         "supportsDynamicFetchMoreData": {
             "type": "boolean",
-            "description": "Indicates whether the visual supports dymanic fetching of data in each segment"
+            "description": "Indicates whether the data-fetch window dimensions can be controlled by the visual properties"
         }
     },
     "additionalProperties": false,
