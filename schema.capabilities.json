@@ -72,6 +72,10 @@
         "subtotals": {
             "description": "Specifies the subtotal customizations applied in the customizeQuery method",
             "$ref": "#/definitions/subtotals"
+        },
+        "supportsDynamicFetchMoreData": {
+            "type": "boolean",
+            "description": "Indicates whether the visual supports dymanic fetching of data in each segment"
         }
     },
     "additionalProperties": false,
