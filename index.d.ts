@@ -128,6 +128,16 @@ declare namespace powerbi {
         /** Used by the visual to display a blocker license notification, display "upgrade" button. */
         VisualIsBlocked = 2,
     }
+    
+    export const enum DrillType {
+        Up = 1,
+
+        /** Grouping becomes the union of the current grouping and the next level in the hierarchy / Provides behavior of drilling down on a data point when used with a datapoint. */
+        Down = 2,
+
+        /** Grouping becomes the next level in the hierarchy exclusively. Current level grouping is dropped. */
+        MoveToNextlevel = 3,
+    }
 }
 
 
@@ -373,6 +383,13 @@ declare module powerbi {
 
         /** Describes the data reduction applied to this data set when limits are exceeded. */
         dataReduction?: DataViewReductionMetadata;
+    
+        /** Contains metadata about the dataRoles */
+        dataRoles?: DataRolesInfo;
+    }
+
+    export interface DataRolesInfo {
+        drillableRoles?: powerbi.DrillableRoles;
     }
 
     export interface DataViewMetadataColumn {
@@ -724,6 +741,27 @@ declare module powerbi {
 
     /** Defines the PrimitiveValue range. */
     export type PrimitiveValueRange = ValueRange<PrimitiveValue>;
+    
+    export interface DrillableRoles {
+        [role: string]: DrillType[];
+    }
+
+    export interface DrillUpArgs {
+        roleName: string;
+        drillType: DrillType.Up;
+    }
+
+    export interface DrillMoveNextLevelArgs {
+        roleName: string;
+        drillType: DrillType.MoveToNextlevel;
+    }
+
+    export interface DrillDownArgs {
+        roleName: string;
+        drillType: DrillType.Down;
+    }
+
+    export type DrillArgs = DrillUpArgs | DrillDownArgs | DrillMoveNextLevelArgs;
 }
 
 
@@ -1637,6 +1675,7 @@ declare module powerbi.extensibility.visual {
         displayWarningIcon: (hoverText: string, detailedText: string) => void;
         licenseManager: IVisualLicenseManager;
         webAccessService: IWebAccessService;
+        drill: (args: DrillArgs) => void;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {
