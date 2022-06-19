@@ -588,6 +588,5 @@ declare module powerbi {
     }
     export interface IVisualWarning {
         code: string;
-        // getMessages(resourceProvider: jsCommon.IStringResourceProvider): IVisualErrorMessage;
     }
 }

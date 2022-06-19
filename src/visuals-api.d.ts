@@ -1476,17 +1476,44 @@ declare module powerbi.extensibility {
     }
 }
 
+declare module powerbi {
+    /**
+ * Represents a return type for privilege status query methods
+ */
+    export const enum PrivilegeStatus {
+        /**
+         * The privilege is allowed in the current environment
+         */
+        Allowed,
+
+        /**
+         * The privilege declaration is missing in visual capabilities section
+         */
+        NotDeclared,
+
+        /**
+         * The privilege is not supported in the current environment
+         */
+        NotSupported,
+
+        /**
+         * The privilege usage was denied by tenant administrator
+         */
+        DisabledByAdmin,
+    }
+}
+
 declare module powerbi.extensibility {
     /** 
      * Provides an access to local storage for read / write access 
      */
-    export interface ILocalVisualStorageService {
+     interface ILocalVisualStorageService {
         /**
-         * Checks if the local storage usage is enabled for use.
+         * Returns the availability status of the service.
          * 
-         * @returns true if the local storage is enabled and false otherwise
+         * @returns the promise that resolves to privilege status of the service
          */
-        enabled(): IPromise<boolean>;
+        status(): IPromise<PrivilegeStatus>;
 
         /**
          * Returns promise that resolves to the data associated with 'key' if it was found or rejects otherwise.
@@ -1552,7 +1579,26 @@ declare module powerbi.extensibility {
      * Provides functionality to save visual content as file
      */
     export interface IDownloadService {
+        /**
+         * Returns the availability status of the service.
+         * 
+         * @returns the promise that resolves to privilege status of the service
+         */
+        exportStatus(): IPromise<PrivilegeStatus>;
+
         exportVisualsContent(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<boolean>;
+    }
+}
+
+declare module powerbi.extensibility {
+    export interface IWebAccessService {
+        /**
+         * Returns the availability status of the service for specified url.
+         * 
+         * @param url - the URL to check status for
+         * @returns the promise that resolves to privilege status of the service
+         */
+        webAccessStatus(url: string): IPromise<PrivilegeStatus>;
     }
 }
 
@@ -1577,7 +1623,6 @@ declare module powerbi {
  *  Expanded `host.colorPalette` now expose a boolean `isHighContrast` flag and several non-data colors 
  *  including `foreground`, `foregroundSelected`, `background` and `hyperlink` all of which are required for high-contrast accessibility support.
  */
-
 
 declare module powerbi.extensibility.visual {
     /**
@@ -1622,6 +1667,7 @@ declare module powerbi.extensibility.visual {
         hostEnv: powerbi.common.CustomVisualHostEnv;
         displayWarningIcon: (hoverText: string, detailedText: string) => void;
         licenseManager: IVisualLicenseManager;
+        webAccessService: IWebAccessService;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {

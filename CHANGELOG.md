@@ -1,5 +1,11 @@
 # Change Log - Power BI Custom Visuals API
 
+# 5.0.0
+* Add new `Formatting Model` interfaces
+
+# 4.6.0
+* Adds `privileges` into schema for capabilities.json
+
 # 4.0.0
 * `openModalDialog` enhancements: allow defining the dialog's size, position and title.
 
