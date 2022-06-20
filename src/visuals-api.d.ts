@@ -164,7 +164,7 @@ declare module powerbi.visuals.plugins {
         name: string;
 
         /** Function to call to create the visual. */
-        create: (options?: extensibility.visual.VisualConstructorOptions) => extensibility.IVisual;
+        create: (options: extensibility.visual.VisualConstructorOptions) => extensibility.IVisual;
 
         /** Function to call to create a modal dialog. */
         createModalDialog?: (dialogId: string, options: extensibility.visual.DialogConstructorOptions, initialState: object) => void;
