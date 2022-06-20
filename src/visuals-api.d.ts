@@ -7,6 +7,10 @@ declare namespace powerbi {
         /** Indicates that the role can be bound to either Grouping or Measure. */
         GroupingOrMeasure = 2,
     }
+    export const enum VisualDataRoleKindPreference {
+        Measure,
+        Grouping,
+    }
     const enum VisualDataChangeOperationKind {
         Create = 0,
         Append = 1,
@@ -87,6 +91,13 @@ declare namespace powerbi {
         merge = 0,
         /** removing existing filter. */
         remove = 1,
+    }
+    export const enum VisualObjectCategoryOptions {
+        /** The configuration affects visual's formatting - look & feel, colors, axes, labels etc.*/
+        Formatting = 1,
+
+        /** The configuration controls an analytical visual aid - forcasts, trendlines, reference lines and shapes etc.*/
+        Analytics = 2,
     }
     const enum DialogAction {
         Close = 0,
@@ -834,6 +845,13 @@ declare module powerbi.data {
 
     export interface ISQConstantExpr extends ISQExpr { }
 
+    export const enum FieldKind {
+        /** Indicates the field references a column, which evaluates to a distinct set of values (e.g., Year, Name, SalesQuantity, etc.). */
+        Column,
+
+        /** Indicates the field references a measure, which evaluates to a single value (e.g., SalesYTD, Sum(Sales), etc.). */
+        Measure,
+    }
 }
 
 
@@ -1039,7 +1057,6 @@ declare module powerbi {
         valueExpr?: ISQExpr;
     }
 }
-
 
 declare module powerbi {
     import SemanticFilter = data.ISemanticFilter;
@@ -1287,6 +1304,18 @@ declare module powerbi {
         /** Properties used for formatting (e.g., Conditional Formatting). */
         formattingProperties?: string[];
     }
+
+    export namespace VisualObjectRepetition {
+        export interface VisualObjectRepetitionMetadata {
+            propertyId: DataViewObjectPropertyIdentifier;
+            selector: Selector;
+            allowOverrideSubtotalMatching?: boolean;
+            altStaticSelector?: Selector;
+            propertyDescriptor: any; // Actual type DataViewObjectPropertyDescriptor
+            /** For property pane usage. Display name for the Container in which to add a slice for this repetition  */
+            containerName?: string;
+        }
+    }
 }
 
 
@@ -1485,7 +1514,6 @@ declare module powerbi.extensibility {
     }
 }
 
-
 declare module powerbi {
     /**
  * Represents a return type for privilege status query methods
@@ -1517,7 +1545,7 @@ declare module powerbi.extensibility {
     /** 
      * Provides an access to local storage for read / write access 
      */
-    interface ILocalVisualStorageService {
+     interface ILocalVisualStorageService {
         /**
          * Returns the availability status of the service.
          * 
@@ -1648,6 +1676,9 @@ declare module powerbi.extensibility.visual {
 
         /** Gets the set of objects that the visual is currently displaying. */
         enumerateObjectInstances?(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstanceEnumeration;
+
+        /** Gets the settings to display in the formatting pane */
+        getFormattingModel?(): any;
     }
 
     export interface IVisualHost extends extensibility.IVisualHost {
@@ -1743,5 +1774,3 @@ declare module powerbi.extensibility.visual {
         isLicenseInfoAvailable: boolean;
     }
 }
-
-export default powerbi;
