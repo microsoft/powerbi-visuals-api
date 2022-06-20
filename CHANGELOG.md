@@ -1,5 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
+# 5.0.0
+* Add new formatting pane `FormattingModel` interfaces
+
 # 4.6.0
 * Adds `privileges` into schema for capabilities.json
 
