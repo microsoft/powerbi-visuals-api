@@ -78,6 +78,9 @@
             "description": "Indicates whether the data-fetch window dimensions can be controlled by the visual properties"
         }
     },
+    "required": [
+        "privileges"
+    ],
     "additionalProperties": false,
     "definitions": {
         "privilege": {
@@ -89,7 +92,8 @@
                     "description": "The internal name of the privilege",
                     "enum": [
                         "WebAccess",
-                        "LocalStorage"
+                        "LocalStorage",
+                        "ExportContent"
                     ]
                 },
                 "essential": {
