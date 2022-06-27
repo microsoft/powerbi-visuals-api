@@ -1,5 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
+## 4.8.0
+ * `supportsDynamicFetchMoreData` : enables visuals to support dynamic data-fetch window dimensions that can be controlled by the visual properties.
+
 # 4.0.0
 * `openModalDialog` enhancements: allow defining the dialog's size, position and title.
 
