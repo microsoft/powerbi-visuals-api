@@ -18,12 +18,6 @@ declare module powerbi {
 
         export interface FormattingModelMessage {
             messageKey: string;
-            action?: FormattingModelMessageAction;
-        }
-
-        export interface FormattingModelMessageAction {
-            key: string;
-            fn: () => void;
         }
 
         export interface FormattingWarning {
@@ -228,10 +222,6 @@ declare module powerbi {
             name: VisualFormattingSlicePlaceholderName;
         }
 
-        /**
-         * Handles resolving the type of placeholder that's expected to be return.
-         * If you give it a slice placeholder, you should get a slice back, etc
-         */
         export interface ResolvedFormattingPlaceholder<TFormattingPlaceholder extends FormattingPlaceholder> {
             item: TFormattingPlaceholder extends FormattingCardPlaceholder
             ? FormattingCard
@@ -445,9 +435,6 @@ declare module powerbi {
         }
 
         interface Slider extends NumUpDown { }
-
-        // ideally we would set type here to number, but the old formatting pane always converts enum members to string
-        // values before binding - so using string here to keep it consistent for the flags control
         interface ItemFlagsSelection extends SimpleComponentBase<string> {
             items: IEnumMember[];
         }

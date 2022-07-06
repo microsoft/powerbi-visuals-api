@@ -1674,11 +1674,8 @@ declare module powerbi.extensibility.visual {
         /** Notifies the visual that it is being destroyed, and to do any cleanup necessary (such as unsubscribing event handlers). */
         destroy?(): void;
 
-        /** Gets the set of objects that the visual is currently displaying. */
-        enumerateObjectInstances?(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstanceEnumeration;
-
         /** Gets the settings to display in the formatting pane */
-        getFormattingModel?(): any;
+        getFormattingModel?(): visuals.FormattingModel | undefined;
     }
 
     export interface IVisualHost extends extensibility.IVisualHost {
