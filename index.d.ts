@@ -17,7 +17,7 @@ declare namespace powerbi {
         Resize = 4,
         ViewMode = 8,
         Style = 16,
-        ResizeEnd = 32,
+        ResizeEnd = 36,
         All = 62,
     }
     const enum VisualPermissions {
