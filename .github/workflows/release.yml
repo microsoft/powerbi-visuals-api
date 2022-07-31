@@ -1,0 +1,30 @@
+name: build
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    environment: automated-release
+    runs-on: ubuntu-latest
+    env: 
+      GH_TOKEN: ${{secrets.GH_TOKEN}}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Add config details
+      run: |
+        git config --global user.name ${{secrets.NAME}}
+        git config --global user.email ${{secrets.EMAIL}}
+    - name: Move release to draft
+      run: gh release edit $TAG_NAME --draft=true
+      env:
+        TAG_NAME: ${{ github.event.release.tag_name }}
+    - name: Run npm install
+      run: |
+        npm i
+    - name: Publish release
+      run: |
+        gh release edit $TAG_NAME --draft=false
+      env:
+        TAG_NAME: ${{ github.event.release.tag_name }}
