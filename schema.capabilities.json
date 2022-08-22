@@ -1415,6 +1415,30 @@
                             "type": "boolean"
                         }
                     }
+                },
+                "rowSubtotalsType": {
+                    "type": "object",
+                    "description": "Indicates location of row subtotals locations (Top, Bottom). Top means subtotals located on top of DS and calculated even before all DS rows fetched, Bottom means subtotals located at the end of DS and shown only after all rows are fetched",
+                    "properties": {
+                        "propertyIdentifier": {
+                            "type": "object",
+                            "properties": {
+                                "objectName": {
+                                    "type": "string"
+                                },
+                                "propertyName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "defaultValue": {
+                            "type": "string",
+                            "enum": [
+                                "Top",
+                                "Botton"
+                            ]
+                        }
+                    }
                 }
             },
             "requires": [
