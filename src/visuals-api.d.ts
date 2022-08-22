@@ -1770,4 +1770,9 @@ declare module powerbi.extensibility.visual {
         /** Indicates whether the licenses info could be retrieved. */
         isLicenseInfoAvailable: boolean;
     }
+
+    export const enum RowSubtotalType {
+        Top = "Top",
+        Bottom = "Bottom",
+    }
 }
