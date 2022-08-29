@@ -79,7 +79,7 @@
         "keepAllMetadataColumns": {
             "type": "boolean",
             "description": "Indicates that visual is going to receive all metadata columns, no matter what the active projections are"
-        },
+        }
     },
     "required": [
         "privileges"
