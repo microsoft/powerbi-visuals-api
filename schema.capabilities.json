@@ -1442,7 +1442,7 @@
                             "type": "string",
                             "enum": [
                                 "Top",
-                                "Botton"
+                                "Bottom"
                             ]
                         }
                     }
