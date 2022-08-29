@@ -72,6 +72,9 @@
         "subtotals": {
             "description": "Specifies the subtotal customizations applied in the customizeQuery method",
             "$ref": "#/definitions/subtotals"
+        },
+        "migration": {
+            "$ref": "#/definitions/migration"        
         }
     },
     "required": [
@@ -1444,6 +1447,25 @@
             "requires": [
                 "matrix"
             ]
+        },
+        "migration": {
+            "type": "object",
+            "description": "Defines the supported APIs for migration",
+            "properties": {
+                "filter": {
+                    "$ref": "#/definitions/migration.filter"
+                }
+            }
+        },
+        "migration.filter": {
+            "type": "object",
+            "description": "Defines the capabilities for migrating the filter API",
+            "properties": {
+                "shouldUseIdentityFilter": {
+                    "type": "boolean",
+                    "description": "Indicates whether the new filter should be identity filter"
+                }
+            }
         }
     }
 }
