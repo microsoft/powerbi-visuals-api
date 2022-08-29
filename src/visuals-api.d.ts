@@ -149,6 +149,11 @@ declare namespace powerbi {
         /** Grouping becomes the next level in the hierarchy exclusively. Current level grouping is dropped. */
         MoveToNextlevel = 3,
     }
+
+    export const enum RowSubtotalType {
+        Top = "Top",
+        Bottom = "Bottom",
+    }
 }
 
 
@@ -1769,10 +1774,5 @@ declare module powerbi.extensibility.visual {
 
         /** Indicates whether the licenses info could be retrieved. */
         isLicenseInfoAvailable: boolean;
-    }
-
-    export const enum RowSubtotalType {
-        Top = "Top",
-        Bottom = "Bottom",
     }
 }
