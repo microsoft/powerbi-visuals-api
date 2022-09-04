@@ -895,7 +895,7 @@
                 }
             },
             "additionalProperties": false,
-            "oneOf": [
+            "anyOf": [
                 {
                     "required": [
                         "default"
