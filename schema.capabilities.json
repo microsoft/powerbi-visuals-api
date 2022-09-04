@@ -72,6 +72,13 @@
         "subtotals": {
             "description": "Specifies the subtotal customizations applied in the customizeQuery method",
             "$ref": "#/definitions/subtotals"
+        },
+        "migration": {
+            "$ref": "#/definitions/migration"        
+        },
+        "keepAllMetadataColumns": {
+            "type": "boolean",
+            "description": "Indicates that visual is going to receive all metadata columns, no matter what the active projections are"
         }
     },
     "required": [
@@ -888,7 +895,7 @@
                 }
             },
             "additionalProperties": false,
-            "oneOf": [
+            "anyOf": [
                 {
                     "required": [
                         "default"
@@ -1415,11 +1422,54 @@
                             "type": "boolean"
                         }
                     }
+                },
+                "rowSubtotalsType": {
+                    "type": "object",
+                    "description": "Indicates location of row subtotals locations (Top, Bottom). Top means subtotals located on top of DS and calculated even before all DS rows fetched, Bottom means subtotals located at the end of DS and shown only after all rows are fetched",
+                    "properties": {
+                        "propertyIdentifier": {
+                            "type": "object",
+                            "properties": {
+                                "objectName": {
+                                    "type": "string"
+                                },
+                                "propertyName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "defaultValue": {
+                            "type": "string",
+                            "enum": [
+                                "Top",
+                                "Bottom"
+                            ]
+                        }
+                    }
                 }
             },
             "requires": [
                 "matrix"
             ]
+        },
+        "migration": {
+            "type": "object",
+            "description": "Defines the supported APIs for migration",
+            "properties": {
+                "filter": {
+                    "$ref": "#/definitions/migration.filter"
+                }
+            }
+        },
+        "migration.filter": {
+            "type": "object",
+            "description": "Defines the capabilities for migrating the filter API",
+            "properties": {
+                "shouldUseIdentityFilter": {
+                    "type": "boolean",
+                    "description": "Indicates whether the new filter should be identity filter"
+                }
+            }
         }
     }
 }

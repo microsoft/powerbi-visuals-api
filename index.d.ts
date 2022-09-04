@@ -138,6 +138,11 @@ declare namespace powerbi {
         /** Grouping becomes the next level in the hierarchy exclusively. Current level grouping is dropped. */
         MoveToNextlevel = 3,
     }
+
+    export const enum RowSubtotalType {
+        Top = "Top",
+        Bottom = "Bottom",
+    }
 }
 
 
@@ -1676,6 +1681,7 @@ declare module powerbi.extensibility.visual {
         licenseManager: IVisualLicenseManager;
         webAccessService: IWebAccessService;
         drill: (args: DrillArgs) => void;
+        applyCustomSort: (args: CustomVisualApplyCustomSortArgs) => void;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {
@@ -1741,6 +1747,15 @@ declare module powerbi.extensibility.visual {
 
         /** Indicates whether the licenses info could be retrieved. */
         isLicenseInfoAvailable: boolean;
+    }
+    
+    export interface CustomVisualApplyCustomSortArgs {
+        sortDescriptors: CustomVisualSortableFieldDescriptor[];
+    }
+
+    export interface CustomVisualSortableFieldDescriptor {
+        queryName: string;
+        sortDirection: SortDirection;
     }
 }
 
