@@ -1,5 +1,13 @@
 # Change Log - Power BI Custom Visuals API
 
+# 5.1.0 
+* Adds Subtotal position type API 
+* Adds Custom Sorting API
+* Adds new formatting pane `FormattingModel` interfaces
+
+# 4.7.0
+* Adds drill API
+
 # 4.6.0
 * Adds `privileges` into schema for capabilities.json
 
