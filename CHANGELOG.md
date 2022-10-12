@@ -1,8 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
- # 5.1.0 
- * Added Subtotal position/early fetch API 
- * Added Custom Sorting API
+# 5.1.0 
+* Added Subtotal position/early fetch API 
+* Added Custom Sorting API
 
 # 5.0.0
 * Add new formatting pane `FormattingModel` interfaces
