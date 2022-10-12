@@ -24,7 +24,7 @@ jobs:
       run: |
         npm i
         npm run test
-    - run: zip -r release.zip src index* CHANGELOG.md LICENSE package.json README.md schema*
+    - run: zip -r release.zip src index* CHANGELOG.md LICENSE package-lock.json package.json README.md schema*
     - name: Upload production artifacts
       run: |
         gh release upload $TAG_NAME "release.zip#release"
