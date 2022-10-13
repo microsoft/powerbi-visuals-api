@@ -3,6 +3,14 @@
 # 5.2.0
 * Adds `dataReductionCustomization` into schema for capabilities.json, this capability offers a declarative way of customizing some data reduction behavior at query generation time.
 
+# 5.1.0 
+* Adds Subtotal position type API 
+* Adds Custom Sorting API
+* Adds new formatting pane `FormattingModel` interfaces
+
+# 4.7.0
+* Adds drill API
+
 # 4.6.0
 * Adds `privileges` into schema for capabilities.json
 
