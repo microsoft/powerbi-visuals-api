@@ -79,6 +79,10 @@
         "keepAllMetadataColumns": {
             "type": "boolean",
             "description": "Indicates that visual is going to receive all metadata columns, no matter what the active projections are"
+        },
+        "dataReductionCustomization": {
+            "description": "Specifies the dataReduction customization applied in the customQuery method",
+            "$ref": "#/definitions/dataReductionCustomization"
         }
     },
     "required": [
@@ -1470,6 +1474,151 @@
                     "description": "Indicates whether the new filter should migrate to an identity filter"
                 }
             }
+        },
+        "dataReductionCustomization": {
+            "type": "object",
+            "description": "Specifies the dataReduction request customizations applied to the outgoing data query",
+            "properties": {
+                "matrix": {
+                    "description": "Defines the dataReduction customizations of the outgoing data query of a matrix-dataview visual",
+                    "$ref": "#/definitions/dataReductionCustomization.matrix"
+                },
+                "table": {
+                    "description": "Defines the dataReduction customizations of the outgoing data query of a table-dataview visual",
+                    "$ref": "#/definitions/dataReductionCustomization.table"
+                },
+                "categorical": {
+                    "description": "Defines the dataReduction customizations of the outgoing data query of a categorical-dataview visual",
+                    "$ref": "#/definitions/dataReductionCustomization.categorical"
+                }
+            }
+        },
+        "dataReductionCustomization.matrix": {
+            "type": "object",
+            "description": "Specifies the subtotal customizations of the outgoing data query of a matrix-dataview visual",
+            "properties": {
+                "rowCount": {
+                    "type": "object",
+                    "description": "Indicates the row count for the data reduction applied for matrix dataview",
+                    "properties": {
+                        "propertyIdentifier": {
+                            "type": "object",
+                            "properties": {
+                                "objectName": {
+                                    "type": "string"
+                                },
+                                "propertyName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "defaultValue": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "columnCount": {
+                    "type": "object",
+                    "description": "Indicates the column count for the data reduction applied for matrix dataview",
+                    "properties": {
+                        "propertyIdentifier": {
+                            "type": "object",
+                            "properties": {
+                                "objectName": {
+                                    "type": "string"
+                                },
+                                "propertyName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "defaultValue": {
+                            "type": "number"
+                        }
+                    }
+                }
+            },
+            "requires": [
+                "matrix"
+            ]
+        },
+        "dataReductionCustomization.table": {
+            "type": "object",
+            "description": "Specifies the subtotal customizations of the outgoing data query of a table-dataview visual",
+            "properties": {
+                "rowCount": {
+                    "type": "object",
+                    "description": "Indicates the row count for the data reduction applied for table dataview",
+                    "properties": {
+                        "propertyIdentifier": {
+                            "type": "object",
+                            "properties": {
+                                "objectName": {
+                                    "type": "string"
+                                },
+                                "propertyName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "defaultValue": {
+                            "type": "number"
+                        }
+                    }
+                }
+            },
+            "requires": [
+                "table"
+            ]
+        },
+        "dataReductionCustomization.categorical": {
+            "type": "object",
+            "description": "Specifies the subtotal customizations of the outgoing data query of a categorical-dataview visual",
+            "properties": {
+                "categoryCount": {
+                    "type": "object",
+                    "description": "Indicates the category count for the data reduction applied for categorical dataview",
+                    "properties": {
+                        "propertyIdentifier": {
+                            "type": "object",
+                            "properties": {
+                                "objectName": {
+                                    "type": "string"
+                                },
+                                "propertyName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "defaultValue": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "groupedValuesCount": {
+                    "type": "object",
+                    "description": "Indicates the grouped value count for the data reduction applied for categorical dataview",
+                    "properties": {
+                        "propertyIdentifier": {
+                            "type": "object",
+                            "properties": {
+                                "objectName": {
+                                    "type": "string"
+                                },
+                                "propertyName": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "defaultValue": {
+                            "type": "number"
+                        }
+                    }
+                }
+            },
+            "requires": [
+                "categorical"
+            ]
         }
     }
 }

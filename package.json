@@ -1,6 +1,6 @@
 {
   "name": "powerbi-visuals-api",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "Power BI Custom Visuals API type definitions for typescript",
   "types": "index",
   "main": "index.js",
