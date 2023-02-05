@@ -139,7 +139,7 @@ declare namespace powerbi {
         /** Used by the visual to display a blocker license notification, display "upgrade" button. */
         VisualIsBlocked = 2,
     }
-    
+
     export const enum DrillType {
         Up = 1,
 
@@ -399,7 +399,7 @@ declare module powerbi {
 
         /** Describes the data reduction applied to this data set when limits are exceeded. */
         dataReduction?: DataViewReductionMetadata;
-    
+
         /** Contains metadata about the dataRoles */
         dataRoles?: DataRolesInfo;
     }
@@ -757,7 +757,7 @@ declare module powerbi {
 
     /** Defines the PrimitiveValue range. */
     export type PrimitiveValueRange = ValueRange<PrimitiveValue>;
-    
+
     export interface DrillableRoles {
         [role: string]: DrillType[];
     }
@@ -1550,7 +1550,7 @@ declare module powerbi.extensibility {
     /** 
      * Provides an access to local storage for read / write access 
      */
-     interface ILocalVisualStorageService {
+    interface ILocalVisualStorageService {
         /**
          * Returns the availability status of the service.
          * 
@@ -1617,6 +1617,16 @@ declare module powerbi.extensibility {
     }
 }
 
+declare module powerbi {
+    /**
+    * Represents a return object for exportVisualsContentExtended method
+    */
+    export interface ExportContentResultInfo {
+        downloadCompleted: boolean;
+        fileName?: string;
+    }
+}
+
 declare module powerbi.extensibility {
     /** 
      * Provides functionality to save visual content as file
@@ -1630,6 +1640,8 @@ declare module powerbi.extensibility {
         exportStatus(): IPromise<PrivilegeStatus>;
 
         exportVisualsContent(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<boolean>;
+
+        exportVisualsContentExtended(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<ExportContentResultInfo>;
     }
 }
 
