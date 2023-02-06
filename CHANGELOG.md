@@ -1,9 +1,9 @@
 # Change Log - Power BI Custom Visuals API
 
 ## 5.3.0
-* SelectionId's update: fix Custom Visuals selectionId for matrix dataView.  
-The selectionId's core data might change therefore a persisted selectionIds/identityIndex using an older API version might not be relevant.
-* `downloadService`: Adds a new method `exportVisualsContentExtended` which returns expanded reuslt information of the download.    
+* SelectionId's update-fix for matrix dataView.  
+*Note: the selectionId's core data might change therefore a persisted selectionIds/identityIndex using an older API version might not be relevant in matrix dataView.*
+* `downloadService`: Adds a new method `exportVisualsContentExtended` which returns expanded reuslt information of the download.      
 
 ## 5.2.0
 * Adds `dataReductionCustomization` into schema for capabilities.json, this capability offers a declarative way of customizing some data reduction behavior at query generation time.
