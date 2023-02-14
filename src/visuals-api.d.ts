@@ -1624,6 +1624,16 @@ declare module powerbi.extensibility {
     }
 }
 
+declare module powerbi {
+    /**
+    * Represents a return object for exportVisualsContentExtended method
+    */
+    export interface ExportContentResultInfo {
+        downloadCompleted: boolean;
+        fileName?: string;
+    }
+}
+
 declare module powerbi.extensibility {
     /** 
      * Provides functionality to save visual content as file
@@ -1637,6 +1647,8 @@ declare module powerbi.extensibility {
         exportStatus(): IPromise<PrivilegeStatus>;
 
         exportVisualsContent(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<boolean>;
+
+        exportVisualsContentExtended(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<ExportContentResultInfo>;
     }
 }
 
