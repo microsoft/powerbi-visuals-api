@@ -1,5 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
+# 5.3.0
+* Extended `VisualUpdateType` enum with 3 new types: `FormattingSubSelectionChange`, `FormatModeChange` and `FilterOptionsChange`.
+
 # 5.2.0
 * Adds `dataReductionCustomization` into schema for capabilities.json, this capability offers a declarative way of customizing some data reduction behavior at query generation time.
 

@@ -16,13 +16,20 @@ declare namespace powerbi {
         Append = 1,
         Segment = 2,
     }
+    /** 
+     * Binary system is used for types flags managing, so VisualUpdateType value
+     * represents a combination of all received types
+     */
     const enum VisualUpdateType {
-        Data = 2,
-        Resize = 4,
-        ViewMode = 8,
-        Style = 16,
-        ResizeEnd = 32,
-        All = 62,
+        Data = 1 << 1,
+        Resize = 1 << 2,
+        ViewMode = 1 << 3,
+        Style = 1 << 4,
+        ResizeEnd = 1 << 5,
+        FormattingSubSelectionChange = 1 << 6,
+        FormatModeChange = 1 << 7,
+        FilterOptionsChange = 1 << 8,
+        All = Data | Resize | ViewMode | Style | ResizeEnd | FormattingSubSelectionChange | FormatModeChange | FilterOptionsChange
     }
     const enum VisualPermissions {
     }
@@ -139,7 +146,7 @@ declare namespace powerbi {
         /** Used by the visual to display a blocker license notification, display "upgrade" button. */
         VisualIsBlocked = 2,
     }
-    
+
     export const enum DrillType {
         Up = 1,
 
@@ -399,7 +406,7 @@ declare module powerbi {
 
         /** Describes the data reduction applied to this data set when limits are exceeded. */
         dataReduction?: DataViewReductionMetadata;
-    
+
         /** Contains metadata about the dataRoles */
         dataRoles?: DataRolesInfo;
     }
@@ -757,7 +764,7 @@ declare module powerbi {
 
     /** Defines the PrimitiveValue range. */
     export type PrimitiveValueRange = ValueRange<PrimitiveValue>;
-    
+
     export interface DrillableRoles {
         [role: string]: DrillType[];
     }
@@ -1550,7 +1557,7 @@ declare module powerbi.extensibility {
     /** 
      * Provides an access to local storage for read / write access 
      */
-     interface ILocalVisualStorageService {
+    interface ILocalVisualStorageService {
         /**
          * Returns the availability status of the service.
          * 
