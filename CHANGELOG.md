@@ -1,20 +1,26 @@
 # Change Log - Power BI Custom Visuals API
 
-# 5.2.0
+## 5.3.0
+* SelectionId's update-fix for matrix dataView.  
+*Note: the selectionId's core data might change therefore a persisted selectionIds/identityIndex using an older API version might not be relevant in matrix dataView.*
+* `downloadService`: Adds a new method `exportVisualsContentExtended` which returns expanded reuslt information of the download.
+* Extended `VisualUpdateType` enum with 3 new types: `FormattingSubSelectionChange`, `FormatModeChange` and `FilterOptionsChange`.
+
+## 5.2.0
 * Adds `dataReductionCustomization` into schema for capabilities.json, this capability offers a declarative way of customizing some data reduction behavior at query generation time.
 
-# 5.1.0 
+## 5.1.0 
 * Adds Subtotal position type API 
 * Adds Custom Sorting API
 * Adds new formatting pane `FormattingModel` interfaces
 
-# 4.7.0
+## 4.7.0
 * Adds drill API
 
-# 4.6.0
+## 4.6.0
 * Adds `privileges` into schema for capabilities.json
 
-# 4.0.0
+## 4.0.0
 * `openModalDialog` enhancements: allow defining the dialog's size, position and title.
 
 ## 3.8.4
