@@ -1,5 +1,8 @@
 # Change Log - Power BI Custom Visuals API
 
+## 5.4.0
+* Adds `isDataFilterApplied` into DataViewMetadata, to provide a boolean value of whether any applied filter affects the visual.
+
 ## 5.3.0
 * SelectionId's update-fix for matrix dataView.  
 *Note: the selectionId's core data might change therefore a persisted selectionIds/identityIndex using an older API version might not be relevant in matrix dataView.*

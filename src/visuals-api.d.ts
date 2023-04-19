@@ -409,6 +409,9 @@ declare module powerbi {
 
         /** Contains metadata about the dataRoles */
         dataRoles?: DataRolesInfo;
+
+        /** Specifies if any filter applied affects the visual */
+        isDataFilterApplied?: boolean;
     }
 
     export interface DataRolesInfo {
