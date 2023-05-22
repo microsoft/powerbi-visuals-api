@@ -1703,6 +1703,25 @@ declare module powerbi.extensibility.visual {
 
         /** Gets the settings to display in the formatting pane */
         getFormattingModel?(): visuals.FormattingModel | undefined;
+        
+        /**
+         * Gets the styles that are relevant to a sub-selection
+         * To add special submenu items (e.g. grid), they come from getSubselectionShortcuts given that a special property is defined within the subSelectionStyles
+         * The submenu items then come from a special SubSelectionShortcutsKey provided to getSubSelectionShortcuts */
+        getSubSelectionStyles?(subselections: visuals.VisualSubSelection[]): visuals.SubSelectionStyles | undefined;
+
+        /** Gets the shortcuts that are relevant to a sub-selection
+         * @param subSelections The relevant subSelections
+         * @param filter Shortcuts key for filtering of specific shortcuts. If undefined, visual should get shortcuts for regular on-object context menu.
+         * Ensure that the filter works even if it is not needed (calling a filter that is not applicable should return undefined). Some of the infra calls require it to function properly.
+         */
+        getSubSelectionShortcuts?(subselections: visuals.VisualSubSelection[], filter: visuals.SubSelectionShortcutsKey | undefined): visuals.VisualSubSelectionShortcuts | undefined;
+
+        /** Gets the subselectables for disambiguation that are relevant to a visual */
+        getSubSelectables?(filter?: visuals.SubSelectionStylesType): visuals.VisualSubSelection[] | undefined;
+
+        /** Gets the next hoverable subselectable */
+        getNextSubSelectable?(currentSubSelectable: visuals.VisualSubSelection, backwards?: boolean): visuals.VisualSubSelection | undefined;
     }
 
     export interface IVisualHost extends extensibility.IVisualHost {
@@ -1807,4 +1826,38 @@ declare module powerbi.extensibility.visual {
         queryName: string;
         sortDirection: SortDirection;
     }
+}
+
+declare module powerbi {
+    export const enum VisualRoleKey {
+        Rows = 'Rows',
+        Category = 'Category',
+        Legend = 'Legend'
+    }
+}
+
+
+declare module powerbi {
+    export interface SortableFieldDescriptor {
+        queryName: string;
+        sortDirection: SortDirection;
+    }
+// todo Not sure  if this should exist (cause its related to data repetition), its related to SelectEventArgsBase in onobject-format-api.d.ts
+//  /** */ export interface SelectorForColumn {
+//         [queryName: string]: data.DataRepetitionSelector[];
+//     }
+
+//     export interface SelectorsByColumn {
+//         /** Data-bound repetition selection. */
+//         dataMap?: SelectorForColumn;
+
+//         /** Metadata-bound repetition selection.  Refers to a DataViewMetadataColumn queryName. */
+//         metadata?: string[];
+
+//         /** User-defined repetition selection. */
+//         id?: string;
+
+//         /** Cached value details generated from visuals when creating selectionId to prevent the slow process through dataView to fetch them */
+//         valueDetails?: data.ValueDetails[];
+//     } 
 }
