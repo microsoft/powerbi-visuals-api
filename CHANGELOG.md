@@ -1,4 +1,7 @@
 # Change Log - Power BI Custom Visuals API
+## 5.6.0
+* Adds the `storageV2` service.
+* Adds the `acquireAADToken` service.
 
 ## 5.4.0
 * Adds `isDataFilterApplied` into DataViewMetadata, to provide a boolean value of whether any applied filter affects the visual.
