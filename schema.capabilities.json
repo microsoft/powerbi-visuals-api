@@ -100,7 +100,8 @@
                     "enum": [
                         "WebAccess",
                         "LocalStorage",
-                        "ExportContent"
+                        "ExportContent",
+                        "AADAuthentication"
                     ]
                 },
                 "essential": {
