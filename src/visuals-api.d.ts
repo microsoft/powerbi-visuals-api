@@ -16,13 +16,20 @@ declare namespace powerbi {
         Append = 1,
         Segment = 2,
     }
+    /** 
+     * Binary system is used for types flags managing, so VisualUpdateType value
+     * represents a combination of all received types
+     */
     const enum VisualUpdateType {
-        Data = 2,
-        Resize = 4,
-        ViewMode = 8,
-        Style = 16,
-        ResizeEnd = 32,
-        All = 62,
+        Data = 1 << 1,
+        Resize = 1 << 2,
+        ViewMode = 1 << 3,
+        Style = 1 << 4,
+        ResizeEnd = 1 << 5,
+        FormattingSubSelectionChange = 1 << 6,
+        FormatModeChange = 1 << 7,
+        FilterOptionsChange = 1 << 8,
+        All = Data | Resize | ViewMode | Style | ResizeEnd | FormattingSubSelectionChange | FormatModeChange | FilterOptionsChange
     }
     const enum VisualPermissions {
     }
@@ -139,7 +146,7 @@ declare namespace powerbi {
         /** Used by the visual to display a blocker license notification, display "upgrade" button. */
         VisualIsBlocked = 2,
     }
-    
+
     export const enum DrillType {
         Up = 1,
 
@@ -399,9 +406,12 @@ declare module powerbi {
 
         /** Describes the data reduction applied to this data set when limits are exceeded. */
         dataReduction?: DataViewReductionMetadata;
-    
+
         /** Contains metadata about the dataRoles */
         dataRoles?: DataRolesInfo;
+
+        /** Specifies if any filter applied affects the visual */
+        isDataFilterApplied?: boolean;
     }
 
     export interface DataRolesInfo {
@@ -757,7 +767,7 @@ declare module powerbi {
 
     /** Defines the PrimitiveValue range. */
     export type PrimitiveValueRange = ValueRange<PrimitiveValue>;
-    
+
     export interface DrillableRoles {
         [role: string]: DrillType[];
     }
@@ -1519,6 +1529,27 @@ declare module powerbi.extensibility {
     }
 }
 
+declare module powerbi.extensibility {
+    export interface AcquireAADTokenResult {
+        accessToken?: string;
+    }
+
+    export interface IAcquireAADTokenService {
+        /** Returns an authentication token for the resource that the visual defined as a privilge
+         * and the scope is the visual guid plus a constant string "_CV_ForPBI"
+         * @returns the promise that resolves to the authentication token
+        */
+        acquireAADToken(): IPromise<AcquireAADTokenResult>;
+
+        /**
+         * Returns the availability status of the service.
+         * 
+         * @returns the promise that resolves to privilege status of the service
+         */
+        acquireAADTokenstatus(): IPromise<PrivilegeStatus>;
+    }
+}
+
 declare module powerbi {
     /**
  * Represents a return type for privilege status query methods
@@ -1550,7 +1581,7 @@ declare module powerbi.extensibility {
     /** 
      * Provides an access to local storage for read / write access 
      */
-     interface ILocalVisualStorageService {
+    interface ILocalVisualStorageService {
         /**
          * Returns the availability status of the service.
          * 
@@ -1580,6 +1611,50 @@ declare module powerbi.extensibility {
         /**
          * Deletes data associated with 'key' from local storage.
          * 
+         * @param key - the name of the payload to remove
+         */
+        remove(key: string): void;
+    }
+}
+
+declare module powerbi.extensibility {
+
+    interface StorageV2ResultInfo {
+        success: boolean;
+    }
+
+    /**
+     * Provides an access to local storage for read / write access
+     */
+    interface IVisualLocalStorageV2Service {
+        /**
+         * Returns the availability status of the service.
+         *
+         * @returns the promise that resolves to privilege status of the service
+         */
+        status(): IPromise<PrivilegeStatus>;
+
+        /**
+         * Returns promise that resolves to the data associated with 'key' if it was found or rejects otherwise.
+         *
+         * @param key - the name of the payload to retrieve
+         * @returns the promise that resolves to the data required or rejects if it wasn't found or an error occured.
+         */
+        get(key: string): IPromise<string>;
+
+        /**
+         * Saves the data to local storage. This data can be later be retrieved using the 'key'.
+         * Returns a promise that resolves to StorageV2ResultInfo, or rejects if an error occured.
+         *
+         * @param key - the name of the payload to store
+         * @param data - the payload string to store
+         * @returns the promise resolves to StorageV2ResultInfo, or rejects if an error occured.
+         */
+        set(key: string, data: string): IPromise<StorageV2ResultInfo>;
+
+        /**
+         * Deletes data associated with 'key' from local storage.
+         *
          * @param key - the name of the payload to remove
          */
         remove(key: string): void;
@@ -1617,6 +1692,16 @@ declare module powerbi.extensibility {
     }
 }
 
+declare module powerbi {
+    /**
+    * Represents a return object for exportVisualsContentExtended method
+    */
+    export interface ExportContentResultInfo {
+        downloadCompleted: boolean;
+        fileName?: string;
+    }
+}
+
 declare module powerbi.extensibility {
     /** 
      * Provides functionality to save visual content as file
@@ -1630,6 +1715,8 @@ declare module powerbi.extensibility {
         exportStatus(): IPromise<PrivilegeStatus>;
 
         exportVisualsContent(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<boolean>;
+
+        exportVisualsContentExtended(content: string, fileName: string, fileType: string, fileDescription: string): IPromise<ExportContentResultInfo>;
     }
 }
 
@@ -1710,6 +1797,8 @@ declare module powerbi.extensibility.visual {
         webAccessService: IWebAccessService;
         drill: (args: DrillArgs) => void;
         applyCustomSort: (args: CustomVisualApplyCustomSortArgs) => void;
+        storageV2Service: IVisualLocalStorageV2Service;
+        acquireAADTokenService: IAcquireAADTokenService;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {
