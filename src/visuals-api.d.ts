@@ -1618,50 +1618,6 @@ declare module powerbi.extensibility {
 }
 
 declare module powerbi.extensibility {
-
-    interface StorageV2ResultInfo {
-        success: boolean;
-    }
-
-    /**
-     * Provides an access to local storage for read / write access
-     */
-    interface IVisualLocalStorageV2Service {
-        /**
-         * Returns the availability status of the service.
-         *
-         * @returns the promise that resolves to privilege status of the service
-         */
-        status(): IPromise<PrivilegeStatus>;
-
-        /**
-         * Returns promise that resolves to the data associated with 'key' if it was found or rejects otherwise.
-         *
-         * @param key - the name of the payload to retrieve
-         * @returns the promise that resolves to the data required or rejects if it wasn't found or an error occured.
-         */
-        get(key: string): IPromise<string>;
-
-        /**
-         * Saves the data to local storage. This data can be later be retrieved using the 'key'.
-         * Returns a promise that resolves to StorageV2ResultInfo, or rejects if an error occured.
-         *
-         * @param key - the name of the payload to store
-         * @param data - the payload string to store
-         * @returns the promise resolves to StorageV2ResultInfo, or rejects if an error occured.
-         */
-        set(key: string, data: string): IPromise<StorageV2ResultInfo>;
-
-        /**
-         * Deletes data associated with 'key' from local storage.
-         *
-         * @param key - the name of the payload to remove
-         */
-        remove(key: string): void;
-    }
-}
-
-declare module powerbi.extensibility {
     /** 
      * An interface for reporting rendering events 
      */
@@ -1797,7 +1753,6 @@ declare module powerbi.extensibility.visual {
         webAccessService: IWebAccessService;
         drill: (args: DrillArgs) => void;
         applyCustomSort: (args: CustomVisualApplyCustomSortArgs) => void;
-        storageV2Service: IVisualLocalStorageV2Service;
         acquireAADTokenService: IAcquireAADTokenService;
     }
 

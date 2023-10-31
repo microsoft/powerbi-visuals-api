@@ -1,6 +1,5 @@
 # Change Log - Power BI Custom Visuals API
-## 5.6.0
-* Adds the `storageV2` service.
+## 5.7.0
 * Adds the `acquireAADToken` service.
 
 ## 5.4.0
