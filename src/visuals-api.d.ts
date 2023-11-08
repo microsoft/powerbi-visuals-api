@@ -416,6 +416,9 @@ declare module powerbi {
 
     export interface DataRolesInfo {
         drillableRoles?: powerbi.DrillableRoles;
+
+        /** Indicates whether the drill is disabled */
+        isDrillDisabled?: boolean;
     }
 
     export interface DataViewMetadataColumn {
@@ -1754,6 +1757,7 @@ declare module powerbi.extensibility.visual {
         drill: (args: DrillArgs) => void;
         applyCustomSort: (args: CustomVisualApplyCustomSortArgs) => void;
         acquireAADTokenService: IAcquireAADTokenService;
+        setCanDrill: (drillAllowed: boolean) => void;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {

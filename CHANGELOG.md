@@ -1,6 +1,7 @@
 # Change Log - Power BI Custom Visuals API
 ## 5.7.0
 * Adds the `acquireAADToken` service.
+* Dynamic drill control : Adds new API and capability to dynamically control the drill and expand collapse features.
 
 ## 5.4.0
 * Adds `isDataFilterApplied` into DataViewMetadata, to provide a boolean value of whether any applied filter affects the visual.

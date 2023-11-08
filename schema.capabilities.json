@@ -929,6 +929,19 @@
                         "type": "string",
                         "description": "The name of the role"
                     }
+                },
+                "canDisableDrill": {
+                    "$ref": "#/definitions/drilldown.canDisableDrill"
+                }
+            }
+        },
+        "drilldown.canDisableDrill": {
+            "type": "object",
+            "description": "Indicates whether the visual can dynamically control drill",
+            "properties": {
+                "disabledByDefault": {
+                    "type": "boolean",
+                    "description": "Indicates whether the drill should be disabled by default"
                 }
             }
         },
