@@ -1691,6 +1691,58 @@ declare module powerbi.extensibility {
     }
 }
 
+declare module powerbi.extensibility {
+    interface StorageV2ResultInfo {
+        success: boolean;
+    }
+
+    /**
+     * Provides an access to local storage for read / write access
+     */
+    interface IVisualLocalStorageV2Service {
+        /**
+         * Returns the availability status of the service.
+         *
+         * @returns the promise that resolves to privilege status of the service
+         */
+        status(): IPromise<PrivilegeStatus>;
+
+        /**
+         * Returns promise that resolves to the data associated with 'key' if it was found or rejects otherwise.
+         *
+         * @param key - the name of the payload to retrieve
+         * @returns the promise that resolves to the data required or rejects if it wasn't found or an error occured.
+         */
+        get(key: string): IPromise<string>;
+
+        /**
+         * Saves the data to local storage. This data can be later be retrieved using the 'key'.
+         * Returns a promise that resolves to StorageV2ResultInfo, or rejects if an error occured.
+         *
+         * @param key - the name of the payload to store
+         * @param data - the payload string to store
+         * @returns the promise resolves to StorageV2ResultInfo, or rejects if an error occured.
+         */
+        set(key: string, data: string): IPromise<StorageV2ResultInfo>;
+
+        /**
+         * Deletes data associated with 'key' from local storage.
+         *
+         * @param key - the name of the payload to remove
+         */
+        remove(key: string): void;
+    }
+}
+
+declare module powerbi.extensibility {
+    export interface IVisualSubSelectionService {
+         //** Emits the custom visual's sub-selection to PowerBI */
+        subSelect(subSelection: powerbi.visuals.CustomVisualSubSelection): void;
+        //** Sends the custom visual's sub-selection outlines to the PowerBI's outline renderer */
+        updateRegionOutlines(outlines: powerbi.visuals.SubSelectionRegionOutline[]): void;
+    }
+}
+
 declare namespace powerbi.common {
     export const enum CustomVisualHostEnv {
         Web = 1 << 0,
@@ -1727,6 +1779,9 @@ declare module powerbi.extensibility.visual {
 
         /** Gets the settings to display in the formatting pane */
         getFormattingModel?(): visuals.FormattingModel | undefined;
+
+        //** Contains On Object get APIs */
+        visualOnObjectFormatting?: VisualOnObjectFormatting;
     }
 
     export interface IVisualHost extends extensibility.IVisualHost {
@@ -1758,6 +1813,14 @@ declare module powerbi.extensibility.visual {
         applyCustomSort: (args: CustomVisualApplyCustomSortArgs) => void;
         acquireAADTokenService: IAcquireAADTokenService;
         setCanDrill: (drillAllowed: boolean) => void;
+        storageV2Service: IVisualLocalStorageV2Service;
+        subSelectionService: IVisualSubSelectionService;
+    }
+
+    export interface VisualOnObjectFormatting {
+        getSubSelectionStyles(subSelections: powerbi.visuals.CustomVisualSubSelection[]): powerbi.visuals.SubSelectionStyles | undefined;
+        getSubSelectionShortcuts(subSelections: powerbi.visuals.CustomVisualSubSelection[], filter: powerbi.visuals.SubSelectionShortcutsKey | undefined): powerbi.visuals.VisualSubSelectionShortcuts | undefined;
+        getSubSelectables?(filter?: powerbi.visuals.SubSelectionStylesType): powerbi.visuals.CustomVisualSubSelection[] | undefined;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {
@@ -1769,6 +1832,8 @@ declare module powerbi.extensibility.visual {
         operationKind?: VisualDataChangeOperationKind;
         jsonFilters?: IFilter[];
         isInFocus?: boolean;
+        subSelections?: powerbi.visuals.CustomVisualSubSelection[];
+        formatMode?: boolean;
     }
 
     export interface VisualConstructorOptions extends extensibility.VisualConstructorOptions {

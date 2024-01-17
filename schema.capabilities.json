@@ -83,6 +83,14 @@
         "dataReductionCustomization": {
             "description": "Specifies the dataReduction customization applied in the customQuery method",
             "$ref": "#/definitions/dataReductionCustomization"
+        },
+        "supportsOnObjectFormatting": {
+            "type": "boolean",
+            "description": "Indicates that the visual supports onObjectFormatting"
+        },
+        "enablePointerEventsFormatMode": {
+            "type": "boolean",
+            "description": "enables PointerEvents for FormatMode"
         }
     },
     "required": [
