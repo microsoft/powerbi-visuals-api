@@ -1707,6 +1707,13 @@ declare module powerbi {
     export interface IFilter { }
 }
 
+declare module powerbi.extensibility {
+    export interface ICustomVisualsOpaqueUtils {
+        /** Compares the two CustomVisualOpaqueIdentity values for equality. */
+        compareCustomVisualOpaqueIdentities(identity1: powerbi.visuals.CustomVisualOpaqueIdentity, identity2: powerbi.visuals.CustomVisualOpaqueIdentity): boolean;
+    }
+}
+
 /**
  * Change Log Version 1.13.0
  *  Expanded `host.colorPalette` now expose a boolean `isHighContrast` flag and several non-data colors 
@@ -1758,6 +1765,7 @@ declare module powerbi.extensibility.visual {
         applyCustomSort: (args: CustomVisualApplyCustomSortArgs) => void;
         acquireAADTokenService: IAcquireAADTokenService;
         setCanDrill: (drillAllowed: boolean) => void;
+        createOpaqueUtils: () => ICustomVisualsOpaqueUtils;
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {

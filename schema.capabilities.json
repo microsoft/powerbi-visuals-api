@@ -184,7 +184,7 @@
                         "patternProperties": {
                             "^[\\w\\s-]+$": {
                                 "description": "Specifies the number of values that can be assigned to this data role in this mapping",
-                                "$ref": "#/definitions/dataViewMapping.numberRangeWithKind"
+                                "$ref": "#/definitions/dataViewMapping.roleCondition"
                             }
                         },
                         "additionalProperties": false
@@ -568,7 +568,7 @@
                 }
             }
         },
-        "dataViewMapping.numberRangeWithKind": {
+        "dataViewMapping.roleCondition": {
             "allOf": [
                 {
                     "$ref": "#/definitions/dataViewMapping.numberRange"
@@ -577,6 +577,14 @@
                     "properties": {
                         "kind": {
                             "$ref": "#/definitions/dataRole.kind"
+                        }
+                    }
+                },
+                {
+                    "properties":{
+                        "areHierarchicallyRelated": {
+                            "type": "boolean",
+                            "description": "Requires that the items in this role are hierarchically related."
                         }
                     }
                 }
