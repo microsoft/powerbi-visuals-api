@@ -1,4 +1,8 @@
 # Change Log - Power BI Custom Visuals API
+## 5.9.0
+* `acquireAADTokenService` : Enhanced to support multiple clouds.
+* `AcquireAADTokenResult` : Extended with additional properties.
+
 ## 5.7.0
 * `acquireAADTokenService` : Enables visuals to obtain Microsoft Entra ID (formerly known as Azure AD) access tokens for signed-in users.
 * Dynamic drill control : Adds new API and capability to dynamically control the drill and expand collapse features.
