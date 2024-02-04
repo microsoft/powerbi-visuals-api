@@ -134,25 +134,25 @@
                             "type": "object",
                             "description": "Defines a mapping between CloudName and its respective target audience.",
                             "properties": {
-                                "PROD": {
+                                "COM": {
                                     "type": "string",
-                                    "description": "Target audience for Production Cloud"
+                                    "description": "Target audience for Commercial Cloud."
                                 },
-                                "MC": {
+                                "CN": {
                                     "type": "string",
-                                    "description": "Target audience for China Cloud"
+                                    "description": "Target audience for China Cloud."
                                 },
                                 "GCC": {
                                     "type": "string",
-                                    "description": "Target audience for US Government Community Cloud Cloud"
+                                    "description": "Target audience for US Government Community Cloud."
                                 },
                                 "GCCHIGH": {
                                     "type": "string",
-                                    "description": "Target audience for US Government Community Cloud Cloud High"
+                                    "description": "Target audience for US Government Community Cloud High."
                                 },
                                 "DOD": {
                                     "type": "string",
-                                    "description": "Target audience for US Department of Defense Cloud"
+                                    "description": "Target audience for US Department of Defense Cloud."
                                 }
                             },
                             "required": [
