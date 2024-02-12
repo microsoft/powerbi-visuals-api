@@ -132,27 +132,27 @@
                         },
                         "parameters": {
                             "type": "object",
-                            "description": "Defines a mapping between CloudName and its respective target audience.",
+                            "description": "Defines a mapping between cloud name and its respective target audience",
                             "properties": {
                                 "COM": {
                                     "type": "string",
-                                    "description": "Target audience for Commercial Cloud."
+                                    "description": "Target audience for Commercial Cloud"
                                 },
                                 "CN": {
                                     "type": "string",
-                                    "description": "Target audience for China Cloud."
+                                    "description": "Target audience for China Cloud"
                                 },
                                 "GCC": {
                                     "type": "string",
-                                    "description": "Target audience for US Government Community Cloud."
+                                    "description": "Target audience for US Government Community Cloud"
                                 },
                                 "GCCHIGH": {
                                     "type": "string",
-                                    "description": "Target audience for US Government Community Cloud High."
+                                    "description": "Target audience for US Government Community Cloud High"
                                 },
                                 "DOD": {
                                     "type": "string",
-                                    "description": "Target audience for US Department of Defense Cloud."
+                                    "description": "Target audience for US Department of Defense Cloud"
                                 }
                             },
                             "required": [
