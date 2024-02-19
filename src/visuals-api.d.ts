@@ -1780,6 +1780,7 @@ declare module powerbi {
 }
 
 declare module powerbi.extensibility {
+    /** Provides encapsulated utility functions for the visual. */
     export interface ICustomVisualsOpaqueUtils {
         /** Compares the two CustomVisualOpaqueIdentity values for equality. */
         compareCustomVisualOpaqueIdentities(identity1: powerbi.visuals.CustomVisualOpaqueIdentity, identity2: powerbi.visuals.CustomVisualOpaqueIdentity): boolean;

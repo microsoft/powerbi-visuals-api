@@ -2,6 +2,9 @@
 ## 5.9.0
 * `acquireAADTokenService` : Enhanced to support multiple clouds.
 * `AcquireAADTokenResult` : Extended with additional properties.
+* `createOpaqueUtils` : Create an encapsulated utility for the visual.
+* Filter API : Exposing new filter type for hierarchy data - HierarchyIdentity.
+* `areHierarchicallyRelated` : Requires that the items in the role are hierarchically related.
 
 ## 5.8.0
 * `storageV2Service` : Enables visuals to use the browser's local storage.
