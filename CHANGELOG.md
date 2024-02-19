@@ -1,4 +1,13 @@
 # Change Log - Power BI Custom Visuals API
+## 5.8.0
+* `storageV2Service` : Enables visuals to use the browser's local storage.
+* Support For OnObject Formatting:
+    - Adds OnObject Formatting interfaces.
+    - visualOnObjectFormatting: Contains the get APIs of the onObject.
+    - `subSelectionService`: Enables visuals to send subSelections and outlines to PowerBI.
+    - Adds 2 capabilities: `supportsOnObjectFormatting` and `enablePointerEventsFormatMode`.
+    - Adds `subSelections` and  `formatMode` in `VisualUpdateOptions` interface.
+
 ## 5.7.0
 * `acquireAADTokenService` : Enables visuals to obtain Microsoft Entra ID (formerly known as Azure AD) access tokens for signed-in users.
 * Dynamic drill control : Adds new API and capability to dynamically control the drill and expand collapse features.
