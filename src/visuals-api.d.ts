@@ -1533,8 +1533,28 @@ declare module powerbi.extensibility {
 }
 
 declare module powerbi.extensibility {
+    export const enum CloudName {
+        PROD = "PROD",
+        MC = "MC",
+        GCC = "GCC",
+        GCCHIGH = "GCCHIGH",
+        DOD = "DOD",
+    }
+
+    export interface AcquireAADTokenUserInfo {
+        userId?: string;
+        tenantId?: string;
+    }
+
+    export interface AcquireAADTokenFabricInfo {
+        cloudName?: CloudName;
+    }
+
     export interface AcquireAADTokenResult {
         accessToken?: string;
+        expiresOn?: number;
+        userInfo?: AcquireAADTokenUserInfo;
+        fabricInfo?: AcquireAADTokenFabricInfo;
     }
 
     export interface IAcquireAADTokenService {

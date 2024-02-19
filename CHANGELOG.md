@@ -1,4 +1,8 @@
 # Change Log - Power BI Custom Visuals API
+## 5.9.0
+* `acquireAADTokenService` : Enhanced to support multiple clouds.
+* `AcquireAADTokenResult` : Extended with additional properties.
+
 ## 5.8.0
 * `storageV2Service` : Enables visuals to use the browser's local storage.
 * Support For OnObject Formatting:
