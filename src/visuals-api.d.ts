@@ -1534,8 +1534,8 @@ declare module powerbi.extensibility {
 
 declare module powerbi.extensibility {
     export const enum CloudName {
-        PROD = "PROD",
-        MC = "MC",
+        COM = "COM",
+        CN = "CN",
         GCC = "GCC",
         GCCHIGH = "GCCHIGH",
         DOD = "DOD",
