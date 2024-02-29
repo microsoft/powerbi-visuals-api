@@ -1534,7 +1534,7 @@ declare module powerbi.extensibility {
 
 declare module powerbi.extensibility {
     /**
-     * Enum representing the various clouds supported by the Power BI Authentication API.
+     * Enum representing the various clouds supported by the Authentication API.
      */
     export const enum CloudName {
         COM = "COM",         // Commercial Cloud
