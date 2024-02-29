@@ -1533,41 +1533,60 @@ declare module powerbi.extensibility {
 }
 
 declare module powerbi.extensibility {
+    /**
+     * Enum representing the various clouds supported by the Power BI Authentication API.
+     */
     export const enum CloudName {
-        COM = "COM",
-        CN = "CN",
-        GCC = "GCC",
-        GCCHIGH = "GCCHIGH",
-        DOD = "DOD",
+        COM = "COM",         // Commercial Cloud
+        CN = "CN",           // China Cloud
+        GCC = "GCC",         // US Government Community Cloud
+        GCCHIGH = "GCCHIGH", // US Government Community Cloud High
+        DOD = "DOD",         // US Department of Defense Cloud
     }
 
+    /**
+     * Interface representing information about the user associated with the token.
+     */
     export interface AcquireAADTokenUserInfo {
-        userId?: string;
-        tenantId?: string;
+        userId?: string;   // Unique identifier for the user
+        tenantId?: string; // Unique identifier for the tenant
     }
 
+    /**
+     * Interface representing information about the fabric environment.
+     */
     export interface AcquireAADTokenFabricInfo {
-        cloudName?: CloudName;
+        cloudName?: CloudName; // Name of the cloud environment
     }
 
+    /**
+     * Interface representing the result of acquiring a Microsoft Entra ID token.
+     */
     export interface AcquireAADTokenResult {
-        accessToken?: string;
-        expiresOn?: number;
-        userInfo?: AcquireAADTokenUserInfo;
-        fabricInfo?: AcquireAADTokenFabricInfo;
+        accessToken?: string;       // Access token issued by Microsoft Entra ID
+        expiresOn?: number;         // Expiration time of the access token
+        userInfo?: AcquireAADTokenUserInfo;     // Information about the user associated with the token
+        fabricInfo?: AcquireAADTokenFabricInfo; // Information about the fabric environment
     }
 
+    /**
+     * Interface representing a service for acquiring authentication tokens from Microsoft Entra ID.
+     */
     export interface IAcquireAADTokenService {
-        /** Returns an authentication token for the resource that the visual defined as a privilge
-         * and the scope is the visual guid plus a constant string "_CV_ForPBI"
-         * @returns the promise that resolves to the authentication token
-        */
+        /** 
+         * Retrieves an authentication token payload.
+         * 
+         * The audience is determined by the visual's `AADAuthentication` privilege configuration for 
+         * the current cloud. The scope is formed by concatenating the visual's GUID with "_CV_ForPBI".
+         * 
+         * @returns A promise that resolves to the authentication token payload.
+         */
         acquireAADToken(): IPromise<AcquireAADTokenResult>;
 
         /**
-         * Returns the availability status of the service.
+         * Retrieves the availability status of the service.
          * 
-         * @returns the promise that resolves to privilege status of the service
+         * @returns A promise that resolves to the privilege status of the service.
          */
         acquireAADTokenstatus(): IPromise<PrivilegeStatus>;
     }
@@ -1756,7 +1775,7 @@ declare module powerbi.extensibility {
 
 declare module powerbi.extensibility {
     export interface IVisualSubSelectionService {
-         //** Emits the custom visual's sub-selection to PowerBI */
+        //** Emits the custom visual's sub-selection to PowerBI */
         subSelect(subSelection: powerbi.visuals.CustomVisualSubSelection): void;
         //** Sends the custom visual's sub-selection outlines to the PowerBI's outline renderer */
         updateRegionOutlines(outlines: powerbi.visuals.SubSelectionRegionOutline[]): void;
