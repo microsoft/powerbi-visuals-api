@@ -1,4 +1,7 @@
 # Change Log - Power BI Custom Visuals API
+## 6.0.0
+* `acquireAADTokenService` : Enhanced to support multiple clouds.
+
 ## 5.9.0
 * `acquireAADTokenService` : Enhanced to support multiple clouds.
 * `AcquireAADTokenResult` : Extended with additional properties.
