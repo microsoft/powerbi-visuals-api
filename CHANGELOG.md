@@ -1,6 +1,5 @@
 # Change Log - Power BI Custom Visuals API
 ## 5.9.0
-* `acquireAADTokenService` : Enhanced to support multiple clouds.
 * `AcquireAADTokenResult` : Extended with additional properties.
 * `createOpaqueUtils` : Create an encapsulated utility for the visual.
 * Filter API : Exposing new filter type for hierarchy data - HierarchyIdentity.

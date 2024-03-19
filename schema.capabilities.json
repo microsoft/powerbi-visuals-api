@@ -101,76 +101,30 @@
         "privilege": {
             "type": "object",
             "description": "privilege - Defines the name, essentiality, and optional parameters for a privilege",
-            "oneOf": [
-                {
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "description": "The internal name of the privilege",
-                            "enum": [
-                                "WebAccess",
-                                "LocalStorage",
-                                "ExportContent"
-                            ]
-                        },
-                        "essential": {
-                            "type": "boolean",
-                            "description": "Determines if the privilege is essential for the visual. Default value is false"
-                        },
-                        "parameters": {
-                            "type": "array",
-                            "description": "Determines a list of privilege parameters if any",
-                            "items": {
-                                "type": "string",
-                                "description": "The privilege parameter"
-                            }
-                        }
-                    }
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The internal name of the privilege",
+                    "enum": [
+                        "WebAccess",
+                        "LocalStorage",
+                        "ExportContent",
+                        "AADAuthentication"
+                    ]
                 },
-                {
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "description": "The internal name of the privilege",
-                            "const": "AADAuthentication"
-                        },
-                        "essential": {
-                            "type": "boolean",
-                            "description": "Determines if the privilege is essential for the visual. Default value is false"
-                        },
-                        "parameters": {
-                            "type": "object",
-                            "description": "Defines a mapping between cloud name and its respective target audience",
-                            "properties": {
-                                "COM": {
-                                    "type": "string",
-                                    "description": "Target audience for Commercial Cloud"
-                                },
-                                "CN": {
-                                    "type": "string",
-                                    "description": "Target audience for China Cloud"
-                                },
-                                "GCC": {
-                                    "type": "string",
-                                    "description": "Target audience for US Government Community Cloud"
-                                },
-                                "GCCHIGH": {
-                                    "type": "string",
-                                    "description": "Target audience for US Government Community Cloud High"
-                                },
-                                "DOD": {
-                                    "type": "string",
-                                    "description": "Target audience for US Department of Defense Cloud"
-                                }
-                            },
-                            "required": [
-                                "COM"
-                            ],
-                            "additionalProperties": false
-                        }
+                "essential": {
+                    "type": "boolean",
+                    "description": "Determines if the privilege is essential for the visual. Default value is false"
+                },
+                "parameters": {
+                    "type": "array",
+                    "description": "Determines a list of privilege parameters if any",
+                    "items": {
+                        "type": "string",
+                        "description": "The privilege parameter"
                     }
                 }
-            ],
+            },
             "required": [
                 "name"
             ]
@@ -635,7 +589,7 @@
                     }
                 },
                 {
-                    "properties":{
+                    "properties": {
                         "areHierarchicallyRelated": {
                             "type": "boolean",
                             "description": "Requires that the items in this role are hierarchically related."
