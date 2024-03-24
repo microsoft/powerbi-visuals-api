@@ -1772,7 +1772,8 @@ declare namespace powerbi.common {
         Embed = 1 << 3,
         ReportServer = 1 << 4,
         ExportReportHost = 1 << 5,
-        Mobile = 1 << 6
+        Mobile = 1 << 6,
+        DashboardHost = 1 << 7
     }
 }
 
