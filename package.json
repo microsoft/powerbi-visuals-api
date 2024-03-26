@@ -21,10 +21,10 @@
   },
   "homepage": "https://microsoft.github.io/PowerBI-visuals",
   "dependencies": {
-    "semver": "^7.3.5"
+    "semver": "^7.6.0"
   },
   "devDependencies": {
-    "jasmine": "^3.9.0"
+    "jasmine": "^3.99.0"
   },
   "scripts": {
     "test": "jasmine"
