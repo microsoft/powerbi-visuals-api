@@ -1533,21 +1533,42 @@ declare module powerbi.extensibility {
 }
 
 declare module powerbi.extensibility {
-    export interface AcquireAADTokenResult {
-        accessToken?: string;
+
+    /**
+     * Interface representing information about the user associated with the token.
+     */
+    export interface AcquireAADTokenUserInfo {
+        userId?: string;   // Unique identifier for the user
+        tenantId?: string; // Unique identifier for the tenant
     }
 
+    /**
+     * Interface representing the result of acquiring a Microsoft Entra ID token.
+     */
+    export interface AcquireAADTokenResult {
+        accessToken?: string;       // Access token issued by Microsoft Entra ID
+        expiresOn?: number;         // Expiration time of the access token
+        userInfo?: AcquireAADTokenUserInfo;     // Information about the user associated with the token
+    }
+
+    /**
+     * Interface representing a service for acquiring authentication tokens from Microsoft Entra ID.
+     */
     export interface IAcquireAADTokenService {
-        /** Returns an authentication token for the resource that the visual defined as a privilge
-         * and the scope is the visual guid plus a constant string "_CV_ForPBI"
-         * @returns the promise that resolves to the authentication token
-        */
+        /** 
+         * Retrieves an authentication token payload.
+         * 
+         * The audience is determined by the visual's `AADAuthentication` privilege parameter. 
+         * The scope is formed by concatenating the visual's GUID with "_CV_ForPBI".
+         * 
+         * @returns A promise that resolves to the authentication token payload.
+         */
         acquireAADToken(): IPromise<AcquireAADTokenResult>;
 
         /**
-         * Returns the availability status of the service.
+         * Retrieves the availability status of the service.
          * 
-         * @returns the promise that resolves to privilege status of the service
+         * @returns A promise that resolves to the privilege status of the service.
          */
         acquireAADTokenstatus(): IPromise<PrivilegeStatus>;
     }
@@ -1736,7 +1757,7 @@ declare module powerbi.extensibility {
 
 declare module powerbi.extensibility {
     export interface IVisualSubSelectionService {
-         //** Emits the custom visual's sub-selection to PowerBI */
+        //** Emits the custom visual's sub-selection to PowerBI */
         subSelect(subSelection: powerbi.visuals.CustomVisualSubSelection): void;
         //** Sends the custom visual's sub-selection outlines to the PowerBI's outline renderer */
         updateRegionOutlines(outlines: powerbi.visuals.SubSelectionRegionOutline[]): void;
@@ -1751,12 +1772,21 @@ declare namespace powerbi.common {
         Embed = 1 << 3,
         ReportServer = 1 << 4,
         ExportReportHost = 1 << 5,
-        Mobile = 1 << 6
+        Mobile = 1 << 6,
+        DashboardHost = 1 << 7
     }
 }
 
 declare module powerbi {
     export interface IFilter { }
+}
+
+declare module powerbi.extensibility {
+    /** Provides encapsulated utility functions for the visual. */
+    export interface ICustomVisualsOpaqueUtils {
+        /** Compares the two CustomVisualOpaqueIdentity values for equality. */
+        compareCustomVisualOpaqueIdentities(identity1: powerbi.visuals.CustomVisualOpaqueIdentity, identity2: powerbi.visuals.CustomVisualOpaqueIdentity): boolean;
+    }
 }
 
 /**
@@ -1815,6 +1845,7 @@ declare module powerbi.extensibility.visual {
         setCanDrill: (drillAllowed: boolean) => void;
         storageV2Service: IVisualLocalStorageV2Service;
         subSelectionService: IVisualSubSelectionService;
+        createOpaqueUtils: () => ICustomVisualsOpaqueUtils;
     }
 
     export interface VisualOnObjectFormatting {
