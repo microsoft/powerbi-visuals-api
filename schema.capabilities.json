@@ -74,7 +74,7 @@
             "$ref": "#/definitions/subtotals"
         },
         "migration": {
-            "$ref": "#/definitions/migration"        
+            "$ref": "#/definitions/migration"
         },
         "keepAllMetadataColumns": {
             "type": "boolean",
@@ -83,6 +83,14 @@
         "dataReductionCustomization": {
             "description": "Specifies the dataReduction customization applied in the customQuery method",
             "$ref": "#/definitions/dataReductionCustomization"
+        },
+        "supportsOnObjectFormatting": {
+            "type": "boolean",
+            "description": "Indicates that the visual supports onObjectFormatting"
+        },
+        "enablePointerEventsFormatMode": {
+            "type": "boolean",
+            "description": "enables PointerEvents for FormatMode"
         }
     },
     "required": [
@@ -184,7 +192,7 @@
                         "patternProperties": {
                             "^[\\w\\s-]+$": {
                                 "description": "Specifies the number of values that can be assigned to this data role in this mapping",
-                                "$ref": "#/definitions/dataViewMapping.numberRangeWithKind"
+                                "$ref": "#/definitions/dataViewMapping.roleCondition"
                             }
                         },
                         "additionalProperties": false
@@ -568,7 +576,7 @@
                 }
             }
         },
-        "dataViewMapping.numberRangeWithKind": {
+        "dataViewMapping.roleCondition": {
             "allOf": [
                 {
                     "$ref": "#/definitions/dataViewMapping.numberRange"
@@ -577,6 +585,14 @@
                     "properties": {
                         "kind": {
                             "$ref": "#/definitions/dataRole.kind"
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "areHierarchicallyRelated": {
+                            "type": "boolean",
+                            "description": "Requires that the items in this role are hierarchically related."
                         }
                     }
                 }
@@ -929,6 +945,19 @@
                         "type": "string",
                         "description": "The name of the role"
                     }
+                },
+                "canDisableDrill": {
+                    "$ref": "#/definitions/drilldown.canDisableDrill"
+                }
+            }
+        },
+        "drilldown.canDisableDrill": {
+            "type": "object",
+            "description": "Indicates whether the visual can dynamically control drill",
+            "properties": {
+                "disabledByDefault": {
+                    "type": "boolean",
+                    "description": "Indicates whether the drill should be disabled by default"
                 }
             }
         },

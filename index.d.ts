@@ -4,4 +4,7 @@
 // Powerbi formatting pane APIs
 /// <reference path='./src/formatting-model-api.d.ts'/>
 
+// Powerbi onobject formatting APIs
+/// <reference path='./src/on-object-formatting-api.d.ts'/>
+
 export default powerbi; 
