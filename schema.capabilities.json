@@ -635,7 +635,7 @@
                     }
                 },
                 {
-                    "properties":{
+                    "properties": {
                         "areHierarchicallyRelated": {
                             "type": "boolean",
                             "description": "Requires that the items in this role are hierarchically related."
