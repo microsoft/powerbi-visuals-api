@@ -1533,6 +1533,16 @@ declare module powerbi.extensibility {
 }
 
 declare module powerbi.extensibility {
+    /**
+     * Enum representing the various clouds supported by the Authentication API.
+     */
+    export const enum CloudName {
+        COM = "COM",         // Commercial Cloud
+        CN = "CN",           // China Cloud
+        GCC = "GCC",         // US Government Community Cloud
+        GCCHIGH = "GCCHIGH", // US Government Community Cloud High
+        DOD = "DOD",         // US Department of Defense Cloud
+    }
 
     /**
      * Interface representing information about the user associated with the token.
@@ -1543,12 +1553,20 @@ declare module powerbi.extensibility {
     }
 
     /**
+     * Interface representing information about the fabric environment.
+     */
+    export interface AcquireAADTokenFabricInfo {
+        cloudName?: CloudName; // Name of the cloud environment
+    }
+
+    /**
      * Interface representing the result of acquiring a Microsoft Entra ID token.
      */
     export interface AcquireAADTokenResult {
         accessToken?: string;       // Access token issued by Microsoft Entra ID
         expiresOn?: number;         // Expiration time of the access token
         userInfo?: AcquireAADTokenUserInfo;     // Information about the user associated with the token
+        fabricInfo?: AcquireAADTokenFabricInfo; // Information about the fabric environment
     }
 
     /**
@@ -1558,8 +1576,8 @@ declare module powerbi.extensibility {
         /** 
          * Retrieves an authentication token payload.
          * 
-         * The audience is determined by the visual's `AADAuthentication` privilege parameter. 
-         * The scope is formed by concatenating the visual's GUID with "_CV_ForPBI".
+         * The audience is determined by the visual's `AADAuthentication` privilege configuration for 
+         * the current cloud. The scope is formed by concatenating the visual's GUID with "_CV_ForPBI".
          * 
          * @returns A promise that resolves to the authentication token payload.
          */
