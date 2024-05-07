@@ -1,4 +1,7 @@
 # Change Log - Power BI Custom Visuals API
+## 5.10.0
+* `sourceFieldParameters` : New DataViewMetadataColumn property indicates that the current field is the result of a field parameter.
+
 ## 5.9.1
 * `acquireAADTokenService` : Enhanced to support multiple clouds.
 

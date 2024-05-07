@@ -474,7 +474,11 @@ declare module powerbi {
          */
         identityExprs?: data.ISQExpr[];
 
+        /** This indicates that the current field is a parameter */
         parameter?: DataViewParameterColumnMetadata;
+
+        /** This indicates that the current field is the result of a field parameter */
+        sourceFieldParameters?: DataViewSourceFieldParameterMetadata[];
     }
 
     export interface DataViewSegmentMetadata {
@@ -754,6 +758,15 @@ declare module powerbi {
 
     /** Indicates the column is a what-if parameter */
     export interface DataViewParameterColumnMetadata {
+    }
+
+    /** Used to indicate if a column comes from field parameter and which one */
+    export interface DataViewSourceFieldParameterMetadata {
+        /** The user-facing display name of the source field parameter */
+        displayName: string;
+
+        /** The source field parameter SQExpr */
+        expr?: data.ISQExpr;
     }
 
     export interface DataViewScriptResultData {
