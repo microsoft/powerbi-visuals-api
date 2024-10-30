@@ -1,4 +1,6 @@
 # Change Log - Power BI Custom Visuals API
+## 5.12.0
+* `pendingChanges`: New property which indicates that changes made on the visual are yet to be applied on the report.
 ## 5.11.0
 * Removes storageService.
 ## 5.10.0

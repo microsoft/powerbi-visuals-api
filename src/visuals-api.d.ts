@@ -1029,6 +1029,14 @@ declare module powerbi {
     export interface FilterTypeDescriptor {
         selfFilter?: boolean;
     }
+
+    export const enum PendingChangesType {
+      "Filters",
+    }
+
+    export type PendingChanges = {
+      [key in PendingChangesType]?: boolean;
+    };
 }
 
 
@@ -1845,16 +1853,17 @@ declare module powerbi.extensibility.visual {
     }
 
     export interface VisualUpdateOptions extends extensibility.VisualUpdateOptions {
-        viewport: IViewport;
-        dataViews: DataView[];
-        type: VisualUpdateType;
-        viewMode?: ViewMode;
-        editMode?: EditMode;
-        operationKind?: VisualDataChangeOperationKind;
-        jsonFilters?: IFilter[];
-        isInFocus?: boolean;
-        subSelections?: powerbi.visuals.CustomVisualSubSelection[];
-        formatMode?: boolean;
+      viewport: IViewport;
+      dataViews: DataView[];
+      type: VisualUpdateType;
+      viewMode?: ViewMode;
+      editMode?: EditMode;
+      operationKind?: VisualDataChangeOperationKind;
+      jsonFilters?: IFilter[];
+      isInFocus?: boolean;
+      subSelections?: powerbi.visuals.CustomVisualSubSelection[];
+      formatMode?: boolean;
+      pendingChanges?: PendingChanges;
     }
 
     export interface VisualConstructorOptions extends extensibility.VisualConstructorOptions {
