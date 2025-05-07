@@ -559,11 +559,48 @@ declare module powerbi {
         values: PrimitiveValue[];
         highlights?: PrimitiveValue[];
         identity?: visuals.CustomVisualOpaqueIdentity;
-    }
 
-    // NOTE: The following is needed for backwards compatibility and should be deprecated.  Callers should use
-    // DataViewMetadataColumn.aggregates instead.
-    export interface DataViewValueColumn extends DataViewColumnAggregates {
+        // NOTE: The following is needed for backwards compatibility and should be deprecated.  
+        // Callers should use DataViewMetadataColumn.aggregates instead.
+        // The values below extend from 'DataViewColumnAggregates'.
+        /** @deprecated Callers should use DataViewMetadataColumn.aggregates instead. */
+        subtotal?: PrimitiveValue;
+
+        /** @deprecated Callers should use DataViewMetadataColumn.aggregates instead. */
+        max?: PrimitiveValue;
+
+        /** @deprecated Callers should use DataViewMetadataColumn.aggregates instead. */
+        min?: PrimitiveValue;
+
+        /** @deprecated Callers should use DataViewMetadataColumn.aggregates instead. */
+        average?: PrimitiveValue;
+
+        /** @deprecated Callers should use DataViewMetadataColumn.aggregates instead. */
+        median?: PrimitiveValue;
+
+        /** @deprecated Callers should use DataViewMetadataColumn.aggregates instead. */
+        count?: number;
+
+        /** @deprecated Callers should use DataViewMetadataColumn.aggregates instead. */
+        percentiles?: DataViewColumnPercentileAggregate[];
+
+        /** 
+        * @deprecated Callers should use DataViewMetadataColumn.aggregates instead.
+        * Represents a single value evaluation, similar to a total. 
+        */
+        single?: PrimitiveValue;
+
+        /** 
+         * @deprecated Callers should use DataViewMetadataColumn.aggregates instead.
+         * Client-computed maximum value for a column. 
+         */
+        maxLocal?: PrimitiveValue;
+
+        /** 
+         * @deprecated Callers should use DataViewMetadataColumn.aggregates instead.
+         * Client-computed maximum value for a column. 
+         */
+        minLocal?: PrimitiveValue;
     }
 
     export interface DataViewCategoryColumn extends DataViewCategoricalColumn {
@@ -669,6 +706,13 @@ declare module powerbi {
 
         children?: DataViewMatrixNode[];
 
+        /**
+        * @deprecated This property is deprecated in DataViewMatrixNode. 
+        * Use `levelValues` instead.
+        * If this node represents a composite group node in matrix, this property will be undefined.
+        */
+        value?: PrimitiveValue;
+
         /* If this DataViewMatrixNode represents the  inner-most dimension of row groups (i.e. a leaf node), then this property will contain the values at the 
         * matrix intersection under the group. The valueSourceIndex property will contain the position of the column in the select statement to which the 
         * value belongs.
@@ -680,7 +724,7 @@ declare module powerbi {
         /**
          * Indicates the source metadata index on the node's level. Its value is 0 if omitted.
          *
-         * DEPRECATED: This property is deprecated and exists for backward-compatibility only.
+         * @deprecated This property is deprecated and exists for backward-compatibility only.
          * New visuals code should consume the new property levelSourceIndex on DataViewMatrixGroupValue instead.
          */
         levelSourceIndex?: number;

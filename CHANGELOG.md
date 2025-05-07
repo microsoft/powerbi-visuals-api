@@ -1,6 +1,14 @@
 # Change Log - Power BI Custom Visuals API
+## 5.11.1
+* Improved deprecation annotations to improve IDE awareness:
+    * in `DataViewMatrixNode` interface:
+        * Introduced explicit `value` property to mark it as deprecated.
+        * Applied JSDoc @deprecated tag to `levelSourceIndex` for clarity.
+    * for a `DataViewValueColumn` marked properties related to `aggregates` as deprecated. 
+
 ## 5.11.0
 * Removes storageService.
+
 ## 5.10.0
 * `sourceFieldParameters` : New DataViewMetadataColumn property indicates that the current field is the result of a field parameter.
 
