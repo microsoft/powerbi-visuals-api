@@ -1,4 +1,6 @@
 # Change Log - Power BI Custom Visuals API
+## 5.11.1
+* `CloudName` : Added BLEU sovereign cloud.
 ## 5.11.0
 * Removes storageService.
 ## 5.10.0
