@@ -161,6 +161,10 @@
                                 "DOD": {
                                     "type": "string",
                                     "description": "Target audience for US Department of Defense Cloud"
+                                },
+                                "BLEU": {
+                                    "type": "string",
+                                    "description": "Target audience for Bleu Sovereign Cloud"
                                 }
                             },
                             "required": [

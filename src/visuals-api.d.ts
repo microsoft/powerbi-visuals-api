@@ -1555,6 +1555,7 @@ declare module powerbi.extensibility {
         GCC = "GCC",         // US Government Community Cloud
         GCCHIGH = "GCCHIGH", // US Government Community Cloud High
         DOD = "DOD",         // US Department of Defense Cloud
+        BLEU = "BLEU",       // Bleu Sovereign Cloud
     }
 
     /**
