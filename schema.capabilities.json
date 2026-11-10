@@ -1,6 +1,9 @@
 {
     "type": "object",
     "properties": {
+        "$schema": {
+            "type": "string"
+        },
         "privileges": {
             "type": "array",
             "description": "Defines required privileges for the visual",
