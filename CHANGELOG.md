@@ -1,4 +1,7 @@
 # Change Log - Power BI Custom Visuals API
+## 5.11.2
+* `persistUnmatchedState` : New optional property setting in capabilities.json. Prevents the host from removing a `filterState` property that is missing from the persisted state in reading view.
+
 ## 5.11.1
 * `CloudName` : Added BLEU sovereign cloud.
 ## 5.11.0
