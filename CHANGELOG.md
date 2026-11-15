@@ -1,4 +1,7 @@
 # Change Log - Power BI Custom Visuals API
+## 5.11.2
+* Updated dependencies to address npm audit vulnerabilities.
+
 ## 5.11.1
 * `CloudName` : Added BLEU sovereign cloud.
 ## 5.11.0
