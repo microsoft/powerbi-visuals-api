@@ -893,6 +893,10 @@
                 "filterState": {
                     "type": "boolean",
                     "description": "Indicates whether the property is a part of filtration information"
+                },
+                "persistUnmatchedState": {
+                    "type": "boolean",
+                    "description": "Indicates whether the property value is kept when the host re-applies a persisted state that does not contain it. Use it with filterState to stop the host from removing the property in reading view"
                 }
             },
             "additionalProperties": false
